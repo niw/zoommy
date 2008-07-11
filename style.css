@@ -1,0 +1,44 @@
+/*
+ * commons
+ */
+* {
+}
+html, body{
+  border: 0;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+body {
+  font-size: 12px;
+  font-family: "Myriad Pro", Arial, "Hiragino Kakugo Pro W3", Meiryo, sans-serif;
+  background: #fff;
+  color: #333;
+  vertical-align: baseline;
+}
+a,
+a:visited {
+	color: #666;
+}
+a:active,
+a:hover {
+	color: #000;
+}
+a img,
+a:link img,
+a:visited img {
+	border: none
+}
+
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+.clearfix {display: inline-table;}
+/* \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* */
