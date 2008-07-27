@@ -238,7 +238,7 @@ var CloseButton = Class.create({
 		}).bind(this));
 	},
 	show: function(element) {
-		this.tag.clonePosition(element, {offsetTop: -15, offsetLeft: -15, setWidth: false, setHeight: false});
+		this.tag.clonePosition(element, {offsetTop: -14, offsetLeft: -14, setWidth: false, setHeight: false});
 		if(Prototype.Browser.IE6) {
 			this.tag.show();
 		} else {
