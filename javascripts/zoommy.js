@@ -13,8 +13,6 @@ var config = {
 	}
 };
 
-Prototype.Browser.IE6 = Prototype.Browser.IE && navigator.appVersion.match('6.0');
-
 function createChild(parent, tagName, func) {
 	var element = $(document.createElement(tagName));
 	if(func) {
@@ -25,7 +23,7 @@ function createChild(parent, tagName, func) {
 }
 
 function setBackgroundImage(element, url) {
-	if(Prototype.Browser.IE6) {
+	if(Prototype.Browser.IE) {
 		element.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true', sizingMethod='scale', src='" + url + "')";
 	} else {
 		element.style.backgroundImage = "url(" + url + ")"
@@ -115,7 +113,7 @@ var Spinner = Class.create({
 			this.tag.style.left = (viewportSize.width - tagSize.width)/2 + offset.left + 'px';
 			this.tag.style.top = (viewportSize.height - tagSize.height)/2 + offset.top + 'px';
 
-			if(Prototype.Browser.IE6) {
+			if(Prototype.Browser.IE) {
 				this.tag.show();
 			} else {
 				this.effect = Effect.Appear(this.tag, {duration: 0.5, afterFinish: (function() {
@@ -130,7 +128,7 @@ var Spinner = Class.create({
 				this.effect.cancel();
 			}
 
-			if(Prototype.Browser.IE6) {
+			if(Prototype.Browser.IE) {
 				this.tag.hide();
 				clearInterval(this.spinning);
 				delete this.spinning;
@@ -147,13 +145,13 @@ var Spinner = Class.create({
 
 var Shadow = Class.create({
 	initialize: function() {
-		this.tag = createChild(document.body, 'table', function(tag) {
+		this.tag = createChild(document.body, 'table', (function(tag) {
 			tag.hide();
 			tag.style.position = 'absolute';
 			tag.style.borderSpacing = tag.style.padding = tag.style.margin = '0';
 			tag.style.borderCollapse = 'collapse';
 			tag.style.zIndex = config.baseZIndex + 1;
-			createChild(tag, 'tbody', function(tag) {
+			createChild(tag, 'tbody', (function(tag) {
 				// create shadow using table tag{{{
 				createChild(tag, 'tr', function(tag) {
 					createChild(tag, 'td', function(tag) {
@@ -172,24 +170,19 @@ var Shadow = Class.create({
 						setBackgroundImage(tag, config.imagesPath + '/shadow_topright.png');
 					});
 				});
-				createChild(tag, 'tr', function(tag) {
+				createChild(tag, 'tr', (function(tag) {
 					createChild(tag, 'td', function(tag) {
 						tag.style.width = '20px';
 						tag.style.margin = tag.style.padding = '0';
 						setBackgroundImage(tag, config.imagesPath + '/shadow_left.png');
 					});
-					createChild(tag, 'td', function(tag) {
-						if(Prototype.Browser.MSIE) {
-							tag.style.width = element.getWidth() - 40 + 'px';
-							tag.style.height = element.getHeight() - 40 + 'px';
-						}
-					});
+					this.centerTag = createChild(tag, 'td');
 					createChild(tag, 'td', function(tag) {
 						tag.style.width = '20px';
 						tag.style.margin = tag.style.padding = '0';
 						setBackgroundImage(tag, config.imagesPath + '/shadow_right.png');
 					});
-				});
+				}).bind(this));
 				createChild(tag, 'tr', function(tag) {
 					createChild(tag, 'td', function(tag) {
 						tag.style.height = tag.style.width = '20px';
@@ -208,15 +201,17 @@ var Shadow = Class.create({
 					});
 				});
 				//}}}
-			});
-		});
+			}).bind(this));
+		}).bind(this));
 	},
 	show: function(element) {
 		element.style.zIndex = config.baseZIndex + 2;
 		this.tag.clonePosition(element, {offsetTop: -10, offsetLeft: -10, setWidth: false, setHeight: false});
 		this.tag.style.width = element.getWidth() + 20 + 'px';
 		this.tag.style.height = element.getHeight() + 20 + 'px';
-		if(Prototype.Browser.IE6) {
+		if(Prototype.Browser.IE) {
+			this.centerTag.style.width = element.getWidth() - 40 + 'px';
+			this.centerTag.style.height = element.getHeight() - 40 + 'px';
 			this.tag.show();
 		} else {
 			Effect.Appear(this.tag, {duration: 0.3});
@@ -246,7 +241,7 @@ var CloseButton = Class.create({
 	},
 	show: function(element) {
 		this.tag.clonePosition(element, {offsetTop: -14, offsetLeft: -14, setWidth: false, setHeight: false});
-		if(Prototype.Browser.IE6) {
+		if(Prototype.Browser.IE) {
 			this.tag.show();
 		} else {
 			Effect.Appear(this.tag, {duration: 0.3});
@@ -283,9 +278,6 @@ var Zoom = Class.create({
 		$A(element.getElementsByTagName('a')).each((function(tag) {
 			if(tag.getAttribute('href').match(/\.(jpg|jpeg|gif|png)$/i)) {
 				tag.onclick = (function(event) {
-					if(event.metaKey) {
-						return true;
-					}
 					this.zoom(tag);
 					return false;
 				}).bind(this);
