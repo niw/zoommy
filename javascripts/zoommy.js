@@ -1,9 +1,12 @@
 var Zoommy = function() {
 
+// Configurations
 var config = {
 	// path to Zoommy image assets (relative path from HTML document which include this js file or absolute path)
 	imagesPath: "images/zoommy",
+	// the most bottom z-index for the zoom ui elements
 	baseZIndex: 900,
+	// style for zoom image (this example adds 10px white border)
 	imageStyle: {
 		background: '#fff',
 		padding: '10px'
