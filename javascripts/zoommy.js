@@ -3,7 +3,11 @@ var Zoommy = function() {
 var config = {
 	// path to Zoommy image assets (relative path from HTML document which include this js file or absolute path)
 	imagesPath: "images/zoommy",
-	baseZIndex: 900
+	baseZIndex: 900,
+	imageStyle: {
+		background: '#fff',
+		padding: '10px'
+	}
 };
 
 Prototype.Browser.IE6 = Prototype.Browser.IE && navigator.appVersion.match('6.0');
@@ -259,8 +263,14 @@ var Zoom = Class.create({
 				this.close();
 			}).bind(this)
 		});
+		Event.observe(document, 'keydown', (function(event) {
+			if(event.keyCode == 27) {
+				this.close();
+			}
+		}).bind(this));
 		this.canvas = createChild(document.body, 'img', function(tag) {
 			tag.hide();
+			tag.setStyle(config.imageStyle);
 			tag.style.position = 'absolute';
 		});
 
@@ -269,7 +279,10 @@ var Zoom = Class.create({
 	register: function(element) {
 		$A(element.getElementsByTagName('a')).each((function(tag) {
 			if(tag.getAttribute('href').match(/\.(jpg|jpeg|gif|png)$/i)) {
-				tag.onclick = (function() {
+				tag.onclick = (function(event) {
+					if(event.metaKey) {
+						return true;
+					}
 					this.zoom(tag);
 					return false;
 				}).bind(this);
@@ -322,6 +335,7 @@ var Zoom = Class.create({
 				afterFinish: (function() {
 					this.shadow.show(this.canvas);
 					this.closeButton.show(this.canvas);
+					this.visible = true;
 				}).bind(this),
 				duration: 0.5
 			});
@@ -329,12 +343,12 @@ var Zoom = Class.create({
 		image.src = tag.getAttribute('href');
 	},
 	close: function() {
-		if(!this.target) {
+		if(!this.target || !this.visible) {
 			return;
 		}
 		this.closeButton.hide();
 		this.shadow.hide();
-/*
+/*Alternative animation {{{
 		new Effect.Scale(this.canvas, window.opera ? 1 : 0, { 
 			beforeSetup: function(effect) {
 				effect.element.makeClipping(); 
@@ -347,7 +361,7 @@ var Zoom = Class.create({
 			transition: Effect.Transitions.sinoidal,
 			duration: 0.3
 		});
-*/
+}}}*/
 		new Effect.Parallel([
 			new Effect.Opacity(this.canvas, {
 				from: 1.0,
@@ -367,6 +381,7 @@ var Zoom = Class.create({
 			afterFinish: (function() {
 				this.canvas.hide();
 				delete this.target;
+				this.visible = false;
 			}).bind(this),
 			duration: 0.3
 		});
