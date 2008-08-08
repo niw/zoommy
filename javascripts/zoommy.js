@@ -100,7 +100,7 @@ var Spinner = Class.create({
 				}
 				var url = config.imagesPath + '/spinner_' + i + '.png';
 				setBackgroundImage(this.tag, url);
-			}).bind(this), 150);
+			}).bind(this), 100);
 
 			var tagSize = this.tag.getDimensions();
 			var viewportSize = document.viewport.getDimensions();
