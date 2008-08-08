@@ -315,6 +315,7 @@ var Zoom = Class.create({
 			this.canvas.setAttribute('src', tag.getAttribute('href'));
 
 			var d = document.viewport.getDimensions();
+			var offset = document.viewport.getScrollOffsets();
 			new Effect.Parallel([
 				new Effect.Opacity(this.canvas, {
 					from: 0.0,
@@ -325,8 +326,8 @@ var Zoom = Class.create({
 					sync: true, transition: Effect.Transitions.sinoidal
 				}),
 				new Effect.Move(this.canvas, {
-					x: (d.width - image.width)/2,
-					y: (d.height - image.height)/2,
+					x: (d.width - image.width)/2 + offset.left,
+					y: (d.height - image.height)/2 + offset.top,
 					mode: 'absolute',
 					sync: true, transition: Effect.Transitions.sinoidal
 				})
