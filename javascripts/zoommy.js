@@ -276,7 +276,7 @@ var Zoom = Class.create({
 	},
 	register: function(element) {
 		$A(element.getElementsByTagName('a')).each((function(tag) {
-			if(tag.getAttribute('href').match(/\.(jpg|jpeg|gif|png)$/i)) {
+			if((attr = tag.getAttribute('href')) && attr.match(/\.(jpg|jpeg|gif|png)$/i)) {
 				tag.onclick = (function(event) {
 					this.zoom(tag);
 					return false;
