@@ -6,11 +6,6 @@ var config = {
 	imagesPath: "images/zoommy",
 	// the most bottom z-index for the zoom ui elements
 	baseZIndex: 900,
-	// style for zoom image (this example adds 10px white border)
-	imageStyle: {
-		background: '#fff',
-		padding: '10px'
-	}
 };
 
 function createChild(parent, tagName, func) {
@@ -231,6 +226,7 @@ var CloseButton = Class.create({
 			tag.style.width = '30px';
 			tag.style.height = '30px';
 			tag.style.zIndex = config.baseZIndex + 3;
+			tag.style.cursor = Prototype.Browser.IE ? 'hand' : 'pointer';
 			setBackgroundImage(tag, config.imagesPath + '/close_button.png');
 		});
 		Event.observe(this.tag, 'click', (function(event) {
@@ -268,7 +264,8 @@ var Zoom = Class.create({
 		}).bind(this));
 		this.canvas = createChild(document.body, 'img', function(tag) {
 			tag.hide();
-			tag.setStyle(config.imageStyle);
+			tag.style.background = '#fff';
+			tag.style.padding = '10px';
 			tag.style.position = 'absolute';
 		});
 
