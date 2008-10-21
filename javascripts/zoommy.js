@@ -273,8 +273,8 @@ var Zoom = Class.create({
 	},
 	register: function(element) {
 		$A(element.getElementsByTagName('a')).each((function(tag) {
-			var attr = tag.getAttribute('href');
-			if(attr && attr.match(/\.(jpg|jpeg|gif|png)$/i)) {
+			var href = tag.getAttribute('href');
+			if(href && href.match(/\.(jpg|jpeg|gif|png)$/i) && tag.getAttribute('rel') != 'nozoommy') {
 				tag.onclick = (function(event) {
 					this.zoom(tag);
 					return false;
