@@ -1,12 +1,8 @@
-var Zoommy = function() {
-
-// Configurations
-var config = {
-	// path to Zoommy image assets (relative path from HTML document which include this js file or absolute path)
+(function() {
+var config = $H({
 	imagesPath: "images/zoommy",
-	// the most bottom z-index for the zoom ui elements
 	baseZIndex: 900,
-};
+}).merge(window.zoommy_config || {}).toObject();
 
 function createChild(parent, tagName, func) {
 	var element = $(document.createElement(tagName));
@@ -248,7 +244,7 @@ var CloseButton = Class.create({
 	}
 });
 
-var Zoom = Class.create({
+var Zoommy = Class.create({
 	initialize: function() {
 		this.spinner = new Spinner();
 		this.shadow = new Shadow();
@@ -383,10 +379,8 @@ var Zoom = Class.create({
 });
 
 Event.observe(window, 'load', (function() {
-	var zoom = new Zoom();
+	var zoommy = new Zoommy();
 }).bind(this));
-};
-
-Zoommy();
+})();
 
 // vim:foldmethod=marker
