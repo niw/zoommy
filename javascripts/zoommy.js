@@ -270,11 +270,24 @@ var Zoommy = Class.create({
 	register: function(element) {
 		$A(element.getElementsByTagName('a')).each((function(tag) {
 			var href = tag.getAttribute('href');
-			if(href && href.match(/\.(jpg|jpeg|gif|png)$/i) && tag.getAttribute('rel') != 'nozoommy') {
+			var rel = tag.getAttribute('rel')
+			if(href && href.match(/\.(jpg|jpeg|gif|png)$/i) && rel != 'nozoommy') {
 				tag.onclick = (function(event) {
 					this.zoom(tag);
 					return false;
 				}).bind(this);
+				var img = $A(tag.getElementsByTagName('img')).first();
+				if(img && !config.noBadge) {
+					createChild(tag, 'div', function(tag) {
+						tag.setStyle({
+							width: '20px',
+							height: '20px',
+							position: 'absolute'
+						});
+						tag.clonePosition(img, {offsetTop: -10, offsetLeft: -10, setWidth: false, setHeight: false});
+						setBackgroundImage(tag, config.imagesPath + '/badge.png');
+					});
+				}
 			}
 		}).bind(this));
 	},
