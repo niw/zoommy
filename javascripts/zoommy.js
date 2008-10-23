@@ -1,8 +1,8 @@
 (function() {
-var config = $H({
+var config = {
 	imagesPath: "images/zoommy",
 	baseZIndex: 900,
-}).merge(window.zoommy_config || {}).toObject();
+}
 
 function createChild(parent, tagName, func) {
 	var element = $(document.createElement(tagName));
@@ -379,6 +379,7 @@ var Zoommy = Class.create({
 });
 
 Event.observe(window, 'load', (function() {
+	config = $H(config).merge(window.zoommy_config || {}).toObject();
 	var zoommy = new Zoommy();
 }).bind(this));
 })();
