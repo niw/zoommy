@@ -137,13 +137,13 @@ var Spinner = Class.create({
 var Shadow = Class.create({
 	initialize: function() {
 		this.tag = createChild(document.body, 'table', (function(tag) {
+			// create shadow using table tag{{{
 			tag.hide();
 			tag.style.position = 'absolute';
 			tag.style.borderSpacing = tag.style.padding = tag.style.margin = '0';
 			tag.style.borderCollapse = 'collapse';
 			tag.style.zIndex = config.baseZIndex + 1;
 			createChild(tag, 'tbody', (function(tag) {
-				// create shadow using table tag{{{
 				createChild(tag, 'tr', function(tag) {
 					createChild(tag, 'td', function(tag) {
 						tag.style.height = tag.style.width = '20px';
@@ -191,8 +191,8 @@ var Shadow = Class.create({
 						setBackgroundImage(tag, config.imagesPath + '/shadow_bottomright.png');
 					});
 				});
-				//}}}
 			}).bind(this));
+			//}}}
 		}).bind(this));
 	},
 	show: function(element) {
@@ -244,6 +244,113 @@ var CloseButton = Class.create({
 	}
 });
 
+var Navigator = Class.create({
+	initialize: function(options) {
+		this.options = options || {};
+		this.tag = createChild(document.body, 'table', (function(tag) {
+			// create navigator using table tag{{{
+			tag.hide();
+			tag.style.position = 'absolute';
+			tag.style.borderSpacing = tag.style.padding = tag.style.margin = '0';
+			tag.style.borderCollapse = 'collapse';
+			tag.style.zIndex = config.baseZIndex + 4;
+			tag.style.color = '#fff';
+			tag.style.textShadow = '#222 0 -1px 0';
+			createChild(tag, 'tbody', (function(tag) {
+				createChild(tag, 'tr', (function(tag) {
+					createChild(tag, 'td', (function(tag) {
+						tag.style.height = tag.style.width = '30px';
+						tag.style.margin = tag.style.padding = '0';
+						this.prev_tag = createChild(tag, 'div', (function(tag) {
+							tag.hide();
+							tag.style.height = tag.style.width = '30px';
+							tag.style.cursor = Prototype.Browser.IE ? 'hand' : 'pointer';
+							setBackgroundImage(tag, config.imagesPath + '/navigator_prev.png');
+							Event.observe(tag, 'click', (function(event) {
+								if(this.options.onPrev) {
+									this.options.onPrev(event);
+								}
+							}).bind(this));
+						}).bind(this));
+					}).bind(this));
+					createChild(tag, 'td',  (function(tag) {
+						tag.style.minWidth = '30px';
+						this.caption_tag = createChild(tag, 'table', (function(tag) {
+							// create caption tags using table tag{{{
+							tag.style.borderSpacing = tag.style.padding = tag.style.margin = '0';
+							tag.style.borderCollapse = 'collapse';
+							createChild(tag, 'tbody', (function(tag) {
+								createChild(tag, 'tr', (function(tag) {
+									createChild(tag, 'td', function(tag) {
+										tag.style.height = tag.style.width = '30px';
+										tag.style.margin = tag.style.padding = '0';
+										setBackgroundImage(tag, config.imagesPath + '/caption_left.png');
+									});
+									this.caption_center_tag = createChild(tag, 'td', function(tag) {
+										tag.style.margin = tag.style.padding = '0';
+										setBackgroundImage(tag, config.imagesPath + '/caption_center.png');
+									});
+									createChild(tag, 'td', function(tag) {
+										tag.style.height = tag.style.width = '30px';
+										tag.style.margin = tag.style.padding = '0';
+										setBackgroundImage(tag, config.imagesPath + '/caption_right.png');
+									});
+								}).bind(this));
+							}).bind(this));
+							// }}}
+						}).bind(this));
+					}).bind(this));
+					createChild(tag, 'td', (function(tag) {
+						tag.style.height = tag.style.width = '30px';
+						tag.style.margin = tag.style.padding = '0';
+						this.next_tag = createChild(tag, 'div', (function(tag) {
+							tag.hide();
+							tag.style.height = tag.style.width = '30px';
+							tag.style.cursor = Prototype.Browser.IE ? 'hand' : 'pointer';
+							setBackgroundImage(tag, config.imagesPath + '/navigator_next.png');
+							Event.observe(tag, 'click', (function(event) {
+								if(this.options.onNext) {
+									this.options.onNext(event);
+								}
+							}).bind(this));
+						}).bind(this));
+					}).bind(this));
+				}).bind(this));
+			}).bind(this));
+			// }}}
+		}).bind(this));
+	},
+	enablePrev: function() {
+		this.prev_tag.show();
+	},
+	disablePrev: function() {
+		this.prev_tag.hide();
+	},
+	enableNext: function() {
+		this.next_tag.show();
+	},
+	disableNext: function() {
+		this.next_tag.hide();
+	},
+	show: function(canvas, title) {
+		if(title) {
+			this.caption_center_tag.innerHTML = title;
+		} else {
+			this.caption_tag.hide();
+		}
+		this.tag.clonePosition(canvas, {offsetTop: canvas.getHeight() + 20, offsetLeft: (canvas.getWidth() - this.tag.getWidth()) / 2, setWidth: false, setHeight: false});
+		//this.tag.clonePosition(canvas, {offsetTop: canvas.getHeight() - 50, offsetLeft: (canvas.getWidth() - this.tag.getWidth()) / 2, setWidth: false, setHeight: false});
+		if(Prototype.Browser.IE) {
+			this.tag.show();
+		} else {
+			Effect.Appear(this.tag, {duration: 0.3});
+		}
+	},
+	hide: function() {
+		this.tag.hide();
+	}
+});
+
 var Zoommy = Class.create({
 	initialize: function() {
 		this.spinner = new Spinner();
@@ -253,9 +360,27 @@ var Zoommy = Class.create({
 				this.close();
 			}).bind(this)
 		});
+		this.navigator = new Navigator({
+			onPrev: (function(event) {
+				this.prev();
+			}).bind(this),
+			onNext: (function(event) {
+				this.next();
+			}).bind(this)
+		});
 		Event.observe(document, 'keydown', (function(event) {
-			if(event.keyCode == 27) {
+			switch(event.keyCode) {
+			case 27: // ESC Key
 				this.close();
+				break;
+			case 37: // Left Key
+			//case 38: // Up Key
+				this.prev();
+				break
+			case 39: // Right Key
+			//case 40: // Down Key
+				this.next();
+				break
 			}
 		}).bind(this));
 		this.canvas = createChild(document.body, 'img', function(tag) {
@@ -264,10 +389,10 @@ var Zoommy = Class.create({
 			tag.style.padding = '10px';
 			tag.style.position = 'absolute';
 		});
-
 		this.register(document);
 	},
 	register: function(element) {
+		var link_tails = {};
 		$A(element.getElementsByTagName('a')).each((function(tag) {
 			var href = tag.getAttribute('href');
 			var rel = tag.getAttribute('rel')
@@ -276,23 +401,51 @@ var Zoommy = Class.create({
 					this.zoom(tag);
 					return false;
 				}).bind(this);
-				var img = $A(tag.getElementsByTagName('img')).first();
-				if(img && !config.noBadge) {
+				if(rel) {
+					var match = rel.match(/^zoommy\[([^\]]+)\]/);
+					if(match) {
+						var last = link_tails[match[1]];
+						if(last) {
+							last.zoommy_next_tag = tag;
+							tag.zoommy_prev_tag = last;
+						}
+						link_tails[match[1]] = tag;
+					}
+				}
+				var thumbnail_tag = $A(tag.getElementsByTagName('img')).first();
+				if(thumbnail_tag && !config.noBadge) {
 					createChild(tag, 'div', function(tag) {
 						tag.setStyle({
 							width: '20px',
 							height: '20px',
 							position: 'absolute'
 						});
-						tag.clonePosition(img, {offsetTop: -10, offsetLeft: -10, setWidth: false, setHeight: false});
+						tag.clonePosition(thumbnail_tag, {offsetTop: -10, offsetLeft: -10, setWidth: false, setHeight: false});
 						setBackgroundImage(tag, config.imagesPath + '/badge.png');
 					});
 				}
 			}
 		}).bind(this));
 	},
-	zoom: function(tag) {
-		if(this.target) {
+	/* Sequence of zoom() through close() and Status of Flags {{{
+	 *
+	 * Flags              visible thumbnail_tag image
+	 *                            anchor_tag
+	 * ------------------ ------- ------------- ---------------------
+     *   ready            -       -             -
+	 * zoom()             -       -             set
+	 *   loading image    -       -             |
+	 * image.onload       -       set           delete if image.abort
+	 *   running effect   -       |             |
+	 * Effect#afterFinish set     |             :
+     *   ready            |       |             delete by gc
+	 * close()            |       |
+	 *   running effect   |       |
+	 * Effect#afterFinish delete  delete
+	 * }}} */
+	zoom: function(tag, options) {
+		var options = options || {};
+		if(this.thumbnail_tag) {
 			return;
 		}
 		if(this.image) {
@@ -303,13 +456,14 @@ var Zoommy = Class.create({
 		this.image = new Image();
 		var image = this.image;
 		image.onload = (function() {
+			this.spinner.hide();
 			if(image.abort) {
 				return false;
 			}
-			this.spinner.hide();
 
-			this.target = $($A(tag.getElementsByTagName('img')).first()) || tag;
-			this.canvas.clonePosition(this.target);
+			this.anchor_tag = tag;
+			this.thumbnail_tag = $A(tag.getElementsByTagName('img')).first() || tag;
+			this.canvas.clonePosition(this.thumbnail_tag);
 			this.canvas.originalPosition = {top: parseInt(this.canvas.style.top), left: parseInt(this.canvas.style.left)};
 			this.canvas.setAttribute('src', tag.getAttribute('href'));
 
@@ -338,55 +492,112 @@ var Zoommy = Class.create({
 				afterFinish: (function() {
 					this.shadow.show(this.canvas);
 					this.closeButton.show(this.canvas);
+					if(tag.zoommy_prev_tag) {
+						this.navigator.enablePrev();
+					} else {
+						this.navigator.disablePrev();
+					}
+					if(tag.zoommy_next_tag) {
+						this.navigator.enableNext();
+					} else {
+						this.navigator.disableNext();
+					}
+					this.navigator.show(this.canvas, tag.getAttribute('title'));
 					this.visible = true;
+					if(options.afterFinish) {
+						options.afterFinish();
+					}
 				}).bind(this),
 				duration: 0.5
 			});
 		}).bind(this);
 		image.src = tag.getAttribute('href');
 	},
-	close: function() {
-		if(!this.target || !this.visible) {
+	close: function(options) {
+		var options = options || {};
+		if(!this.visible) {
+			if(this.image && !this.thumbnail_tag) {
+				this.spinner.hide();
+				this.image.abort = true;
+			}
 			return;
 		}
+		this.navigator.hide();
 		this.closeButton.hide();
 		this.shadow.hide();
-/*Alternative animation {{{
-		new Effect.Scale(this.canvas, window.opera ? 1 : 0, { 
-			beforeSetup: function(effect) {
-				effect.element.makeClipping(); 
-			},  
-			afterFinishInternal: (function(effect) {
-				effect.element.hide().undoClipping(); 
-				this.canvas.hide();
-				delete this.target;
-			}).bind(this),
-			transition: Effect.Transitions.sinoidal,
-			duration: 0.3
-		});
-}}}*/
-		new Effect.Parallel([
+		var afterFinish = (function() {
+			this.canvas.hide();
+			delete this.thumbnail_tag;
+			delete this.anchor_tag;
+			this.visible = false;
+			if(options.afterFinish) {
+				options.afterFinish();
+			}
+		}).bind(this);
+		if(options.immediate) {
 			new Effect.Opacity(this.canvas, {
 				from: 1.0,
 				to: 0.0,
-				sync: true, transition: Effect.Transitions.sinoidal
-			}),
-			new Effect.Resize(this.canvas, this.target.getDimensions(), {
-				sync: true, transition: Effect.Transitions.sinoidal
-			}),
-			new Effect.Move(this.canvas, {
-				x: this.canvas.originalPosition.left,
-				y: this.canvas.originalPosition.top,
-				mode: 'absolute',
-				sync: true, transition: Effect.Transitions.sinoidal
-			})
-		], {
+				transition: Effect.Transitions.sinoidal,
+				duration: 0.1,
+				afterFinish: afterFinish
+			});
+		} else {
+			/* //Alternative animation {{{
+			new Effect.Scale(this.canvas, 200 window.opera ? 1 : 0, {
+				beforeSetup: function(effect) {
+					effect.element.makeClipping();
+				},
+				afterFinishInternal: (function(effect) {
+					effect.element.hide().undoClipping();
+					this.canvas.hide();
+					delete this.thumbnail_tag;
+				}).bind(this),
+				afterFinish: afterFinish,
+				transition: Effect.Transitions.sinoidal,
+				duration: 0.2
+			});
+			// }}} */
+			new Effect.Parallel([
+				new Effect.Opacity(this.canvas, {
+					from: 1.0,
+					to: 0.0,
+					sync: true, transition: Effect.Transitions.sinoidal
+				}),
+				new Effect.Resize(this.canvas, this.thumbnail_tag.getDimensions(), {
+					sync: true, transition: Effect.Transitions.sinoidal
+				}),
+				new Effect.Move(this.canvas, {
+					x: this.canvas.originalPosition.left,
+					y: this.canvas.originalPosition.top,
+					mode: 'absolute',
+					sync: true, transition: Effect.Transitions.sinoidal
+				})
+			], {
+				afterFinish: afterFinish,
+				duration: 0.3
+			});
+		}
+	},
+	prev: function() {
+		if(this.visible) {
+			this.change(this.anchor_tag.zoommy_prev_tag);
+		}
+	},
+	next: function() {
+		if(this.visible) {
+			this.change(this.anchor_tag.zoommy_next_tag);
+		}
+	},
+	change: function(tag, options) {
+		if(!tag || !this.visible) {
+			return;
+		}
+		this.close({
+			immediate: true,
 			afterFinish: (function() {
-				this.canvas.hide();
-				delete this.target;
-				this.visible = false;
-			}).bind(this),
-			duration: 0.3
+				this.zoom(tag, options);
+			}).bind(this)
 		});
 	}
 });
