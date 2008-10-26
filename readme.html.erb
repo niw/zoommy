@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<script type="text/javascript" src="javascripts/prototype.js"></script>
+<script type="text/javascript" src="javascripts/effects.js"></script>
+<script type="text/javascript" src="javascripts/zoommy.js"></script>
+<style style="text/css">
+html, body{
+  border: 0;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+body {
+  font-size: 12px;
+  font-family: Georgia, serif;
+  background: #fff;
+  color: #141414;
+}
+a img {
+  border: 0;
+  vertical-align: text-bottom;
+}
+a, a:visited {
+  color: #666;
+  text-decoration: none;
+}
+a:hover {
+  background: #fff;
+  color: #39c;
+}
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+li {
+  margin: 0;
+  padding: 0;
+}
+.clearfix:after {
+  content: "."; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;
+}
+.clearfix {display: inline-table;}
+/* \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block; zoom: 1;}
+/* */
+#wrapper {
+	padding: 40px 80px;
+}
+.post ol {
+  margin-left: 20px;
+  list-style: decimal;
+}
+.post ul {
+  margin-left: 20px;
+  list-style: square;
+}
+pre {
+  padding: 4px;
+  background: #eee;
+}
+</style>
+<title>Zommy</title>
+</head>
+<body>
+<div id="wrapper" class="post">
+<%= BlueCloth.new(File.read(SRC_FILE_NAME)).to_html %>
+</div>
+</body>
+</html>
