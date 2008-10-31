@@ -1,7 +1,7 @@
 (function() {
+
 var config = {
-	imagesPath: "images/zoommy",
-	baseZIndex: 900,
+	baseZIndex: 900
 }
 
 function createChild(parent, tagName, func) {
@@ -604,6 +604,14 @@ var Zoommy = Class.create({
 
 Event.observe(window, 'load', (function() {
 	config = $H(config).merge(window.zoommy_config || {}).toObject();
+	if(! config.imagesPath) {
+		var tag = $A(document.getElementsByTagName("script")).find(function(tag) {
+			return (tag.src && tag.src.match(/zoommy\.js(\?.*)?$/));
+		});
+		if(tag) {
+			config.imagesPath = tag.src.replace(/zoommy\.js(\?.*)?$/, '../images/zoommy');
+		}
+	}
 	var zoommy = new Zoommy();
 }).bind(this));
 })();
