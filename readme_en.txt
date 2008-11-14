@@ -1,5 +1,4 @@
-Zoommy
-======
+# Zoommy @VERSION
 
 Demo
 ----

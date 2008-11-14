@@ -1,6 +1,4 @@
-Zoommy
-======
-
+# Zoommy @VERSION
 
 Setup
 -----

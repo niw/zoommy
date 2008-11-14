@@ -1,8 +1,16 @@
+/* zoommy.js @VERSION Yoshimasa Niwa <niw@niw.at> */
 (function() {
+
+if((typeof Prototype == 'undefined') || (typeof Element == 'undefined') || (typeof Element.Methods == 'undefined') || !Prototype.Version.match(/^1\.6\./)) {
+	throw "Missing prototype.js, please include prototype.js ver.1.6.x before including zoommy.js"
+}
+if(typeof Effect == 'undefined') {
+	throw "Missing script.aculo.us's effect.js, please include effect.js ver.1.8.x before including zoommy.js"
+}
 
 var config = {
 	baseZIndex: 900
-}
+};
 
 function createChild(parent, tagName, func) {
 	var element = $(document.createElement(tagName));
@@ -49,7 +57,7 @@ Effect.Resize = Class.create(Effect.Base, {
 		};
 		var d = {};
 		d.width = dim.width.round() + 'px';
-		d.height = dim.height.round() + 'px'
+		d.height = dim.height.round() + 'px';
 		if (this.options.resizeFromCenter) {
 			var topd  = (dim.height - this.options.resizeTo.height)/2;
 			var leftd = (dim.width  - this.options.resizeTo.width)/2;
@@ -395,7 +403,7 @@ var Zoommy = Class.create({
 		var link_tails = {};
 		$A(element.getElementsByTagName('a')).each((function(tag) {
 			var href = tag.getAttribute('href');
-			var rel = tag.getAttribute('rel')
+			var rel = tag.getAttribute('rel');
 			if(href && href.match(/\.(jpg|jpeg|gif|png)$/i) && rel != 'nozoommy') {
 				tag.onclick = (function(event) {
 					this.zoom(tag);

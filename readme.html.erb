@@ -71,7 +71,7 @@ pre {
 </head>
 <body>
 <div id="wrapper" class="post">
-<%= BlueCloth.new(File.read(SRC_FILE_NAME)).to_html %>
+<%= BlueCloth.new(ARGF.read).to_html %>
 </div>
 </body>
 </html>
