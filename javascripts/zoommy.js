@@ -405,7 +405,7 @@ var Zoommy = Class.create({
 		$A(element.getElementsByTagName('a')).each((function(tag) {
 			var href = tag.getAttribute('href');
 			var rel = tag.getAttribute('rel');
-			if(href && href.match(/\.(jpg|jpeg|gif|png)$/i) && rel != 'nozoommy') {
+			if((href && href.match(/\.(jpg|jpeg|gif|png)$/i) && rel != 'nozoommy') || (rel && rel.match(/^zoommy/))) {
 				tag.onclick = (function(event) {
 					this.zoom(tag);
 					return false;
