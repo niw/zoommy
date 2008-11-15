@@ -343,6 +343,7 @@ var Navigator = Class.create({
 	show: function(canvas, title) {
 		if(title) {
 			this.caption_center_tag.innerHTML = title;
+			this.caption_tag.show();
 		} else {
 			this.caption_tag.hide();
 		}
