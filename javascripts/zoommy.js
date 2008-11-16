@@ -423,15 +423,15 @@ var Zoommy = Class.create({
 				}
 				var thumbnail_tag = $A(tag.getElementsByTagName('img')).first();
 				if(thumbnail_tag && !config.noBadge) {
-					createChild(tag, 'div', function(tag) {
+					var badge = createChild(tag, 'div', function(tag) {
 						tag.setStyle({
 							width: '20px',
 							height: '20px',
 							position: 'absolute'
 						});
-						tag.clonePosition(thumbnail_tag, {offsetTop: -10, offsetLeft: -10, setWidth: false, setHeight: false});
 						setBackgroundImage(tag, config.imagesPath + '/badge.png');
 					});
+					badge.clonePosition(thumbnail_tag, {offsetTop: -10, offsetLeft: -10, setWidth: false, setHeight: false});
 				}
 			}
 		}).bind(this));
