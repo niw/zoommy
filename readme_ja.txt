@@ -69,7 +69,7 @@ Zoomyを使ってみる
   * images/zoommy
   * javascripts/zoommy.js
 
-  なお、zoommy.jsはコンパクト化済みのもので、zoommy_pack.jsはより圧縮されたもの、zoommy_src.jsはコンパクト化するまえのものです。用途の応じて使い分けてください。
+  なお、zoommy.jsはコンパクト化済みのもので、zoommy\_pack.jsはより圧縮されたもの、zoommy\_src.jsはコンパクト化するまえのものです。用途の応じて使い分けてください。
 
 3. ウェブサイトのページのheadタグに以下のコードを追加します。
 

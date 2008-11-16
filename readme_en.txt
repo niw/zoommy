@@ -67,7 +67,7 @@ Getting Started
   * images/zoommy
   * javascripts/zoommy.js
 
-  For your imformation, zoommy.js is compacted script, zoommy_pack.js is more compacted one and zoommy_src.js is original script before compaction.
+  For your imformation, zoommy.js is compacted script, zoommy\_pack.js is more compacted one and zoommy\_src.js is original script before compaction.
 
 3. Adding include tag into your web pages' header
 
