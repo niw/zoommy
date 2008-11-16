@@ -1,10 +1,229 @@
-# Zoommy @VERSION
+Zoommy
+======
+Zoommyをダウンロードしていただきありがとうございます!
+このドキュメントはZoommyの使い方を簡単なデモとともに説明します。
 
-Setup
------
+ZoommyはSafari, Firefox, IE7とIE6をMacOS X、およびWindowsで動作確認しています。
+
+Zoommyは[Apple webpage](http://www.apple.com/)、および[FacyZoom](http://www.cabel.name/2008/02/fancyzoom-10.html)を参考に作られました。
 
 
-Change log
+Demo
+----
+Zoommyは次のHTMLを自動的にZoomminizeします!
+
+    <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg">
+        <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
+    </a>
+
+<div class="demo">
+<a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg">
+<img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
+</a>
+</div>
+
+さらに、Zoommyは複数の画像をつなげてスライドショーギャラリーを作ることもできます!
+
+    <a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['mySlideShow']"
+	    title="Montmartre, Paris, France">
+        <img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
+    </a>
+    <a href="http://farm3.static.flickr.com/2411/2458159794_84884f683b.jpg" rel="zoommy['mySlideShow']"
+	   title="Raffles Hotel, Singapore">
+        <img src="http://farm3.static.flickr.com/2411/2458159794_84884f683b_s.jpg" />
+    </a>
+    <a href="http://farm3.static.flickr.com/2106/2483739956_89be523894.jpg" rel="zoommy['mySlideShow']"
+	   title="Karuizawa, Nagano, Japan">
+        <img src="http://farm3.static.flickr.com/2106/2483739956_89be523894_s.jpg" />
+    </a>
+
+<div class="demo">
+<a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['mySlideShow']" title="Montmartre, Paris, France">
+<img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
+</a>
+<a href="http://farm3.static.flickr.com/2411/2458159794_84884f683b.jpg" rel="zoommy['mySlideShow']" title="Raffles Hotel, Singapore">
+<img src="http://farm3.static.flickr.com/2411/2458159794_84884f683b_s.jpg" />
+</a>
+<a href="http://farm3.static.flickr.com/2106/2483739956_89be523894.jpg" rel="zoommy['mySlideShow']" title="Karuizawa, Nagano, Japan">
+<img src="http://farm3.static.flickr.com/2106/2483739956_89be523894_s.jpg" />
+</a>
+</div>
+
+
+Zoomyを使ってみる
+-----------------
+1. 依存するライブラリをウェブサイトにコピーします
+
+  Zoommyは[Prototype.js](http://www.prototypejs.org/)**バージョン1.6.0.1**と[script.aculo.us](http://script.aculo.us/)バージョン1.8.xに依存しています。
+  もしすでにウェブサイトがこれらのライブラリを使っている場合、たとえば、[Ruby on Rails](http://www.rubyonrails.org/)のプロジェクトなどではこれらのファイルをコピーする必要はありません。
+
+  Zoommyは現状、Prototype.jsバージョン1.5.xには対応していません。事前にPrototype.jsのバージョンを確認してください。
+
+  **Prototype.jsはバージョン1.6.0.1をお使いください。現状Prototype.jsのバージョン1.6.0.2、1.6.0.3には[IE6とIE7で起こる位置計算のバグがあり](http://prototype.lighthouseapp.com/projects/8886/tickets/90-cloneposition-problem-in-ie7)、Zoommyの動作に影響します。**
+
+  * javascripts/prototype.js 
+  * javascripts/effects.js
+
+2. 次のファイルをウェブサイトにコピーします
+
+  * images/zoommy
+  * javascripts/zoommy.js
+
+  なお、zoommy.jsはコンパクト化済みのもので、zoommy_pack.jsはより圧縮されたもの、zoommy_src.jsはコンパクト化するまえのものです。用途の応じて使い分けてください。
+
+3. ウェブサイトのページのheadタグに以下のコードを追加します。
+
+  すでにprototype.jsとeffects.jsへのタグがある場合はこれらを追加する必要はありません。
+
+        <head>
+        ....
+        <script type="text/javascript" src="javascripts/prototype.js"></script>
+        <script type="text/javascript" src="javascripts/effects.js"></script>
+        <script type="text/javascript" src="javascripts/zoommy.js"></script>
+        ....
+
+4. 追加の設定コードを記述
+
+  もし上記手順2.でコピーした画像を違う場所にしたい場合は、各ページのheadタグに以下のコードを追加します。
+  ここでの**imagePath**はそのウェブページからの相対パスかサイト全体の絶対パスである必要があります。
+
+        <head>
+        ....
+        <script type="text/javascript">
+        zoommy_config = {imagePath: "relative/or/site/wide/absolute/path/to/zoomy/image/from/html"};
+        </script>
+        ....
+
+5. これで完了です。ウェブサイトを表示してみましょう!
+
+
+カスタマイズ
+------------
+
+### タイトルを表示する
+
+  画像をズーム表示した際に、タイトルを表示することができます。**title="_(画像のタイトル)_"**をリンクタグに追加してください。
+
+    <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg" title="Blue sky and Sunshine!!">
+        <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
+    </a>
+
+<div class="demo">
+<a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg" title="Blue sky and Sunshine!!">
+<img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
+</a>
+</div>
+
+### スライドショーギャラリーを作成する
+
+  **ref="zoommy['_(スライドショーの識別子)_']"**をリンクタグに追加することで、Zoommyは同じ識別子のリンクをスライドショーギャラリーにして表示します。
+
+    <a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['travel around the world']">
+        <img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
+    </a>
+    <a href="http://farm3.static.flickr.com/2411/2458159794_84884f683b.jpg" rel="zoommy['travel around the world']">
+        <img src="http://farm3.static.flickr.com/2411/2458159794_84884f683b_s.jpg" />
+    </a>
+    <a href="http://farm3.static.flickr.com/2106/2483739956_89be523894.jpg" rel="zoommy['travel around the world']">
+        <img src="http://farm3.static.flickr.com/2106/2483739956_89be523894_s.jpg" />
+    </a>
+
+<div class="demo">
+<a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['travel around the world']">
+<img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
+</a>
+<a href="http://farm3.static.flickr.com/2411/2458159794_84884f683b.jpg" rel="zoommy['travel around the world']">
+<img src="http://farm3.static.flickr.com/2411/2458159794_84884f683b_s.jpg" />
+</a>
+<a href="http://farm3.static.flickr.com/2106/2483739956_89be523894.jpg" rel="zoommy['travel around the world']">
+<img src="http://farm3.static.flickr.com/2106/2483739956_89be523894_s.jpg" />
+</a>
+</div>
+
+### Zoommyの対象から除外する
+
+  もし画像へのリンクをZoommyの対象から除外する場合は、**rel="nozoommy"**をリンクタグに追加してください。
+
+    <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg" target="_blank" rel="nozoommy">
+        <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
+    </a>
+
+<div class="demo">
+<a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg" target="_blank" rel="nozoommy">
+<img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
+</a>
+</div>
+
+### Zoommyのバッジを表示しない
+
+  標準ではZoommyは対象のリンクないのサムネイルにZoommyバッジ ![小型のプラスアイコン](./images/zoommy/badge.png) を左上に表示します。
+  その必要がない場合は、**noBadge: true**というオプションをheadタグの設定コードに加えてください。
+
+    <head>
+    ....
+    <script type="text/javascript">
+    zoommy_config = {
+        noBadge: true
+    };
+    </script>
+    ....
+
+### Z-Indexを調整する
+
+  もしZoommyをほかのかっこいいスクリプトやライブラリと同時に使う場合、**baseZIndex**オプションを設定コードに追加して、Z-Indexの順番を明示する必要があるでしょう。
+  標準では、Zoommyは900以降を使います。
+
+    <head>
+    ....
+    <script type="text/javascript">
+    zoommy_config = {baseZIndex: 10000};
+    </script>
+    ....
+
+FAQ
+---
+* Q. いくつかの画像へのリンクタグがZoommyの対象になりません。なぜですか?
+
+  A. Zoommyは".png", ".gif", ".jpg"または".jpeg"で終わるhref属性か、"zoommy"で始まるrel属性を持つリンクタグを対象にします。つまり、もしリンクタグのhref属性がこれらの拡張子で終わらない場合(画像をCGIなどが生成する場合など)は、**rel="zoommy"**を書き加える必要があるでしょう。
+
+        <a href="/path/to/image?var=value" rel="zoommy">
+            <img src="/path/to/thumbnail" />
+        </a>
+
+
+更新履歴
+--------
+* 1.0.1
+  * 最初のリリース
+
+
+寄付
+----
+  もしこのZoommyを気に入って頂けましたら、お気軽に以下のフォームから[PayPal](http://www.paypal.com)を通じて、寄付をしていただけると幸いです。
+
+### Zoommyを支援する
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick" />
+<input type="hidden" name="business" value="niw@niw.at" />
+<input type="hidden" name="item_name" value="Zoommy Donation" />
+<input type="hidden" name="item_number" value="ZOOMMY-DONATION" />
+<input type="hidden" name="no_note" value="1" />
+<input type="hidden" name="currency_code" value="JPY" />
+<input type="hidden" name="return" value="http://niw.at/" />
+<input type="hidden" name="tax" value="0" />
+<input type="hidden" name="lc" value="US" />
+寄付額 <input type="text" name="amount" value="1000" size="6" />円
+<input type="submit" name="submit" value="寄付する" />
+</form>
+
+
+ライセンス
 ----------
- * 1.0.1
-   * First release.
+  Zoommy ver.@VERSION は[MIT License](license.txt)で公開しています。
+
+  &copy; Yoshimasa Niwa <niw@niw.at>, [http://niw.at/](http://niw.at)
+
+<!-- 
+vim:ft=markdown:ts=2:sw=2:expandtab
+-->

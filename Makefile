@@ -34,6 +34,10 @@ DOCS = \
 	$(SRC_DIR)/$(DOC_DIR)/readme_en.html \
 	$(NULL)
 
+ATTACHMENTS = \
+	$(SRC_DIR)/MIT-LICENSE.txt \
+	$(NULL)
+
 JS = java -jar $(BUILD_DIR)/js.jar
 ERB = $(BUILD_DIR)/erb.rb
 VER = $(BUILD_DIR)/version.rb
@@ -74,7 +78,10 @@ image: image_dir $(IMAGES)
 doc: doc_dir $(TEMPLATE) $(DOCS)
 	cp -r $(DOCS) $(DIST_DIR)/$(DOC_DIR)
 
-archive: dist_dir library script image doc
+attachment: dist_dir $(ATTACHMENTS)
+	cp -r $(ATTACHMENTS) $(DIST_DIR)
+
+archive: dist_dir library script image doc attachment
 	zip -r $(PREFIX)/$(TARGET)-$(VERSION).zip $(DIST_DIR) -x "*/.*"
 
 clean:

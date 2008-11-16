@@ -1,6 +1,5 @@
-/* zoommy.js @VERSION Yoshimasa Niwa <niw@niw.at> */
+/* zoommy.js @VERSION Copyright (c) 2008 Yoshimasa Niwa */
 (function() {
-
 if((typeof Prototype == 'undefined') || (typeof Element == 'undefined') || (typeof Element.Methods == 'undefined') || !Prototype.Version.match(/^1\.6\./)) {
 	throw "Missing prototype.js, please include prototype.js ver.1.6.x before including zoommy.js"
 }

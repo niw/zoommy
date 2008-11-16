@@ -1,5 +1,5 @@
-Zoommy @VERSION
-===============
+Zoommy
+======
 Thank you for downloading and trying Zoommy!
 This document describe how to use Zoommy with tiny demonstrations.
 
@@ -48,13 +48,16 @@ In addition, Zoommy also automically change image chains into slideshow gallery!
 </a>
 </div>
 
-Setup
------
+
+Getting Started
+---------------
 1. Copy dependencies into your web site
 
-  Zoommy depends on [Prototype.js](http://www.prototypejs.org/) version 1.6.x and [script.aculo.us](http://script.aculo.us/) version 1.8.x.
+  Zoommy depends on [Prototype.js](http://www.prototypejs.org/) **version 1.6.0.1** and [script.aculo.us](http://script.aculo.us/) version 1.8.x.
   If your website already use these libraries, like a [Ruby on Rails](http://www.rubyonrails.org/) project, These files does not need to copy.
   Sorry that Zoommy is currently incompatible Prototype.js version 1.5.x, please check your version of prototype.js.
+
+  **Please use Prototype.js version 1.6.0.1 bacause currently, Prototype.js version 1.6.0.2 and 1.6.0.3 has [a positioning bug on IE6 and IE7](http://prototype.lighthouseapp.com/projects/8886/tickets/90-cloneposition-problem-in-ie7) which affects Zoommy's behavior.**
 
   * javascripts/prototype.js 
   * javascripts/effects.js
@@ -63,6 +66,8 @@ Setup
 
   * images/zoommy
   * javascripts/zoommy.js
+
+  For your imformation, zoommy.js is compacted script, zoommy_pack.js is more compacted one and zoommy_src.js is original script before compaction.
 
 3. Adding include tag into your web pages' header
 
@@ -77,8 +82,8 @@ Setup
 
 4. Additional configuration if needed
 
-  If you want to use the paths for images used in Zoomy(files coped in paragraph 2) as relative path,
-  You should put the next tag into header of each html page.
+  If you want to use the paths for images used in Zoomy(files coped in previous section 2) as your own relative path, You should put the next tag into header of each html page.
+  **imagePath** option shoule be relative pafh from the html or site wide absolute path to the images.
 
         <head>
         ....
@@ -95,11 +100,11 @@ Customize
 
 ### Adding title
 
-  You can show the title of image when zooming. Just adding the __title="_(title of image)_"__ attribute to the anchor tag.
+  You can show the title of image when zooming. Just adding the **title="_(title of image)_"** attribute to the anchor tag.
 
-        <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg" title="Blue sky and Sunshine!!">
-            <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
-        </a>
+    <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg" title="Blue sky and Sunshine!!">
+        <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
+    </a>
 
 <div class="demo">
 <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg" title="Blue sky and Sunshine!!">
@@ -109,17 +114,17 @@ Customize
 
 ### Making slideshow gallery
 
-  Adding __ref="zoommy['_(name of slideshow)_']"__ attirbute to anchor tag, Zoommy groups images with same name and changes them into slideshow gallery.
+  Adding **ref="zoommy['_(name of slideshow)_']"** attirbute to anchor tag, Zoommy groups images with same name and changes them into slideshow gallery.
 
-        <a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['travel around the world']">
-            <img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
-        </a>
-        <a href="http://farm3.static.flickr.com/2411/2458159794_84884f683b.jpg" rel="zoommy['travel around the world']">
-            <img src="http://farm3.static.flickr.com/2411/2458159794_84884f683b_s.jpg" />
-        </a>
-        <a href="http://farm3.static.flickr.com/2106/2483739956_89be523894.jpg" rel="zoommy['travel around the world']">
-            <img src="http://farm3.static.flickr.com/2106/2483739956_89be523894_s.jpg" />
-        </a>
+    <a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['travel around the world']">
+        <img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
+    </a>
+    <a href="http://farm3.static.flickr.com/2411/2458159794_84884f683b.jpg" rel="zoommy['travel around the world']">
+        <img src="http://farm3.static.flickr.com/2411/2458159794_84884f683b_s.jpg" />
+    </a>
+    <a href="http://farm3.static.flickr.com/2106/2483739956_89be523894.jpg" rel="zoommy['travel around the world']">
+        <img src="http://farm3.static.flickr.com/2106/2483739956_89be523894_s.jpg" />
+    </a>
 
 <div class="demo">
 <a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['travel around the world']">
@@ -133,13 +138,13 @@ Customize
 </a>
 </div>
 
-### Exclude from Zoomminize
+### Excluding from Zoomminize
 
-  You can keep the anchors without Zoommy by adding __rel="nozoommy"__ attribute to the tags.
+  You can keep the anchors without Zoommy by adding **rel="nozoommy"** attribute to the tags.
 
-        <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg" target="_blank" rel="nozoommy">
-            <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
-        </a>
+    <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg" target="_blank" rel="nozoommy">
+        <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
+    </a>
 
 <div class="demo">
 <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg" target="_blank" rel="nozoommy">
@@ -147,53 +152,77 @@ Customize
 </a>
 </div>
 
-### Disable Zoommy badge
+### Disabling Zoommy badge
 
-  As default, Zoommy add a zoom badge(small plus icon) to the thumbnail image inside the anchor tag on top left corner.
-  You can strip this badge by adding __noBadge: true__ option to the configuration code inside head tag.
+  As default, Zoommy add a zoom badge ![small plus icon](./images/zoommy/badge.png) to the thumbnail image inside the anchor tag on top left corner.
+  You can strip this badge by adding **noBadge: true** option to the configuration code inside head tag.
 
-        <head>
-        ....
-        <script type="text/javascript">
-        zoommy_config = {
-			noBadge: true
-        };
-        </script>
-        ....
+    <head>
+    ....
+    <script type="text/javascript">
+    zoommy_config = {
+        noBadge: true
+    };
+    </script>
+    ....
 
 ### Adjusting Z-Index of Zoommy
 
-  If you want to use Zoommy with another fancy scripts or libraries, you may adding the __baseZIndex__ option to the configuration code for specification the Z-Index ordering.
+  If you want to use Zoommy with another fancy scripts or libraries, you may adding the **baseZIndex** option to the configuration code for specification the Z-Index ordering.
   Default bottom, base Z-Index Zoommy uses are 900.
 
-        <head>
-        ....
-        <script type="text/javascript">
-        zoommy_config = {baseZIndex: 10000};
-        </script>
-        ....
+    <head>
+    ....
+    <script type="text/javascript">
+    zoommy_config = {baseZIndex: 10000};
+    </script>
+    ....
 
 FAQ
 ---
- * Q. Some anchor tag doesn't not change into Zoommy? Why?
+* Q. Some anchor tag doesn't not change into Zoommy? Why?
 
-   A. Zoommy changes the anchor tags which href attribute ends with ".png", ".gif", ".jpg" or ".jpeg", or which rel attribute start with "zoommy".
-   This means that you may add __rel="zoommy"__ to anchor tag if its href attribute doesn't end with these extensions.
+  A. Zoommy changes the anchor tags which href attribute ends with ".png", ".gif", ".jpg" or ".jpeg", or which rel attribute start with "zoommy".
+   This means that you may add **rel="zoommy"** to anchor tag if its href attribute doesn't end with these extensions like CGI.
 
         <a href="/path/to/image?var=value" rel="zoommy">
             <img src="/path/to/thumbnail" />
         </a>
 
+
 Change log
 ----------
- * 1.0.1
-   * First release.
+* 1.0.1
+  * First release.
 
 
-License and Copyright
----------------------
+Donation
+--------
+  If you would like to help the Zoommy project, please feel free to donate via [PayPal](http://www.paypal.com) using the followin form. Thank you for your donation!
 
-  Zoommy is under MIT License.
+### Support the Zoommy
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick" />
+<input type="hidden" name="business" value="niw@niw.at" />
+<input type="hidden" name="item_name" value="Zoommy Donation" />
+<input type="hidden" name="item_number" value="ZOOMMY-DONATION" />
+<input type="hidden" name="no_note" value="1" />
+<input type="hidden" name="currency_code" value="USD" />
+<input type="hidden" name="return" value="http://niw.at/" />
+<input type="hidden" name="tax" value="0" />
+<input type="hidden" name="lc" value="US" />
+Amount in USD <input type="text" name="amount" value="10.00" size="6" />
+<input type="submit" name="submit" value="Donate" />
+</form>
 
 
-Yoshimasa Niwa <niw@niw.at> [http://niw.at/](http://niw.at) Zoommy @VERSION
+License
+-------
+  Zoommy ver.@VERSION is under [MIT License](license.txt).
+
+  &copy; Yoshimasa Niwa <niw@niw.at>, [http://niw.at/](http://niw.at)
+
+<!-- 
+vim:ft=markdown:ts=2:sw=2:expandtab
+-->
