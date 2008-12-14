@@ -5,7 +5,7 @@ This document describe how to use Zoommy with tiny demonstrations.
 
 Zoommy is tested and works on Safari, Firefox, IE7 and IE6 on both MacOS X and Windows.
 
-Zoommy was strongy inspired from [Apple webpage](http://www.apple.com/) and [FacyZoom](http://www.cabel.name/2008/02/fancyzoom-10.html).
+Zoommy was strongy inspired from [Apple webpage](http://www.apple.com/) and [FancyZoom](http://www.cabel.name/2008/02/fancyzoom-10.html).
 
 Demo
 ----
@@ -23,16 +23,13 @@ Zoommy automatically change next code into delicious image link! (zoomminizing!)
 
 In addition, Zoommy also automically change image chains into slideshow gallery!
 
-    <a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['mySlideShow']"
-	    title="Montmartre, Paris, France">
+    <a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['mySlideShow']" title="Montmartre, Paris, France">
         <img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
     </a>
-    <a href="http://farm3.static.flickr.com/2411/2458159794_84884f683b.jpg" rel="zoommy['mySlideShow']"
-	   title="Raffles Hotel, Singapore">
+    <a href="http://farm3.static.flickr.com/2411/2458159794_84884f683b.jpg" rel="zoommy['mySlideShow']" title="Raffles Hotel, Singapore">
         <img src="http://farm3.static.flickr.com/2411/2458159794_84884f683b_s.jpg" />
     </a>
-    <a href="http://farm3.static.flickr.com/2106/2483739956_89be523894.jpg" rel="zoommy['mySlideShow']"
-	   title="Karuizawa, Nagano, Japan">
+    <a href="http://farm3.static.flickr.com/2106/2483739956_89be523894.jpg" rel="zoommy['mySlideShow']" title="Karuizawa, Nagano, Japan">
         <img src="http://farm3.static.flickr.com/2106/2483739956_89be523894_s.jpg" />
     </a>
 
@@ -83,7 +80,7 @@ Getting Started
 4. Additional configuration if needed
 
   If you want to use the paths for images used in Zoomy(files coped in previous section 2) as your own relative path, You should put the next tag into header of each html page.
-  **imagePath** option shoule be relative pafh from the html or site wide absolute path to the images.
+  **imagePath** option should be relative pafh from the html or site wide absolute path to the images.
 
         <head>
         ....
@@ -204,7 +201,7 @@ Donation
 
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_xclick" />
-<input type="hidden" name="business" value="niw@niw.at" />
+<input type="hidden" name="business" value="5C84VM52Z94JY" />
 <input type="hidden" name="item_name" value="Zoommy Donation" />
 <input type="hidden" name="item_number" value="ZOOMMY-DONATION" />
 <input type="hidden" name="no_note" value="1" />

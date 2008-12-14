@@ -5,7 +5,7 @@ Zoommyをダウンロードしていただきありがとうございます!
 
 ZoommyはSafari, Firefox, IE7とIE6をMacOS X、およびWindowsで動作確認しています。
 
-Zoommyは[Apple webpage](http://www.apple.com/)、および[FacyZoom](http://www.cabel.name/2008/02/fancyzoom-10.html)を参考に作られました。
+Zoommyは[Apple webpage](http://www.apple.com/)、および[FancyZoom](http://www.cabel.name/2008/02/fancyzoom-10.html)を参考に作られました。
 
 
 Demo
@@ -24,16 +24,13 @@ Zoommyは次のHTMLを自動的にZoomminizeします!
 
 さらに、Zoommyは複数の画像をつなげてスライドショーギャラリーを作ることもできます!
 
-    <a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['mySlideShow']"
-	    title="Montmartre, Paris, France">
+    <a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['mySlideShow']" title="Montmartre, Paris, France">
         <img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
     </a>
-    <a href="http://farm3.static.flickr.com/2411/2458159794_84884f683b.jpg" rel="zoommy['mySlideShow']"
-	   title="Raffles Hotel, Singapore">
+    <a href="http://farm3.static.flickr.com/2411/2458159794_84884f683b.jpg" rel="zoommy['mySlideShow']" title="Raffles Hotel, Singapore">
         <img src="http://farm3.static.flickr.com/2411/2458159794_84884f683b_s.jpg" />
     </a>
-    <a href="http://farm3.static.flickr.com/2106/2483739956_89be523894.jpg" rel="zoommy['mySlideShow']"
-	   title="Karuizawa, Nagano, Japan">
+    <a href="http://farm3.static.flickr.com/2106/2483739956_89be523894.jpg" rel="zoommy['mySlideShow']" title="Karuizawa, Nagano, Japan">
         <img src="http://farm3.static.flickr.com/2106/2483739956_89be523894_s.jpg" />
     </a>
 
@@ -197,15 +194,15 @@ FAQ
   * 最初のリリース
 
 
-寄付
-----
-  もしこのZoommyを気に入って頂けましたら、お気軽に以下のフォームから[PayPal](http://www.paypal.com)を通じて、寄付をしていただけると幸いです。
+ご支援のお願い
+--------------
+  もしこのZoommyを気に入って頂けましたら、お気軽に以下のフォームから[PayPal](http://www.paypal.com)を通じてご支援いただけると幸いです。
 
 ### Zoommyを支援する
 
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_xclick" />
-<input type="hidden" name="business" value="niw@niw.at" />
+<input type="hidden" name="business" value="5C84VM52Z94JY" />
 <input type="hidden" name="item_name" value="Zoommy Donation" />
 <input type="hidden" name="item_number" value="ZOOMMY-DONATION" />
 <input type="hidden" name="no_note" value="1" />
@@ -213,10 +210,11 @@ FAQ
 <input type="hidden" name="return" value="http://niw.at/" />
 <input type="hidden" name="tax" value="0" />
 <input type="hidden" name="lc" value="US" />
-寄付額 <input type="text" name="amount" value="1000" size="6" />円
+ご支援 <input type="text" name="amount" value="1000" size="6" />円
 <input type="submit" name="submit" value="寄付する" />
 </form>
 
+皆様のご支援に感謝いたします。
 
 ライセンス
 ----------
