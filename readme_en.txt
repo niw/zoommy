@@ -4,15 +4,15 @@ Thank you for downloading and trying Zoommy!
 This document describe how to use Zoommy with tiny demonstrations.
 
 Zoommy is tested and works on Safari, Firefox, IE7 and IE6 on both MacOS X and Windows.
-
 Zoommy was strongy inspired from [Apple webpage](http://www.apple.com/) and [FancyZoom](http://www.cabel.name/2008/02/fancyzoom-10.html).
+
 
 Demo
 ----
-Zoommy automatically change next code into delicious image link! (zoomminizing!)
+Zoommy automatically change the next code into a delicious image link! (zoomminizing!)
 
     <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg">
-        <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
+      <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
     </a>
 
 <div class="demo">
@@ -21,16 +21,16 @@ Zoommy automatically change next code into delicious image link! (zoomminizing!)
 </a>
 </div>
 
-In addition, Zoommy also automically change image chains into slideshow gallery!
+In addition, Zoommy also automically change the images chain into a slideshow gallery!
 
     <a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['mySlideShow']" title="Montmartre, Paris, France">
-        <img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
+      <img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
     </a>
     <a href="http://farm3.static.flickr.com/2411/2458159794_84884f683b.jpg" rel="zoommy['mySlideShow']" title="Raffles Hotel, Singapore">
-        <img src="http://farm3.static.flickr.com/2411/2458159794_84884f683b_s.jpg" />
+      <img src="http://farm3.static.flickr.com/2411/2458159794_84884f683b_s.jpg" />
     </a>
     <a href="http://farm3.static.flickr.com/2106/2483739956_89be523894.jpg" rel="zoommy['mySlideShow']" title="Karuizawa, Nagano, Japan">
-        <img src="http://farm3.static.flickr.com/2106/2483739956_89be523894_s.jpg" />
+      <img src="http://farm3.static.flickr.com/2106/2483739956_89be523894_s.jpg" />
     </a>
 
 <div class="demo">
@@ -64,7 +64,7 @@ Getting Started
 
   For your imformation, zoommy.js is compacted script, zoommy\_pack.js is more compacted one and zoommy\_src.js is original script before compaction.
 
-3. Adding include tag into your web pages' header
+3. Adding include tags to your web pages' header
 
   The tag for prototype.js and effects.js does not need if they are already there.
 
@@ -93,12 +93,12 @@ Getting Started
 Customize
 ---------
 
-### Adding title
+### Adding a title
 
   You can show the title of image when zooming. Just adding the **title="_(title of image)_"** attribute to the anchor tag.
 
     <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg" title="Blue sky and Sunshine!!">
-        <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
+      <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
     </a>
 
 <div class="demo">
@@ -107,18 +107,18 @@ Customize
 </a>
 </div>
 
-### Making slideshow gallery
+### Making slideshow galleries
 
-  Adding **ref="zoommy['_(name of slideshow)_']"** attirbute to anchor tag, Zoommy groups images with same name and changes them into slideshow gallery.
+  Adding **rel="zoommy['_(name of slideshow)_']"** attirbute to anchor tag, Zoommy groups images with same name and changes them into a slideshow gallery.
 
     <a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['travel around the world']">
-        <img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
+      <img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
     </a>
     <a href="http://farm3.static.flickr.com/2411/2458159794_84884f683b.jpg" rel="zoommy['travel around the world']">
-        <img src="http://farm3.static.flickr.com/2411/2458159794_84884f683b_s.jpg" />
+      <img src="http://farm3.static.flickr.com/2411/2458159794_84884f683b_s.jpg" />
     </a>
     <a href="http://farm3.static.flickr.com/2106/2483739956_89be523894.jpg" rel="zoommy['travel around the world']">
-        <img src="http://farm3.static.flickr.com/2106/2483739956_89be523894_s.jpg" />
+      <img src="http://farm3.static.flickr.com/2106/2483739956_89be523894_s.jpg" />
     </a>
 
 <div class="demo">
@@ -138,7 +138,7 @@ Customize
   You can keep the anchors without Zoommy by adding **rel="nozoommy"** attribute to the tags.
 
     <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg" target="_blank" rel="nozoommy">
-        <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
+      <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
     </a>
 
 <div class="demo">
@@ -147,10 +147,10 @@ Customize
 </a>
 </div>
 
-### Disabling Zoommy badge
+### Disabling Zoommy badges
 
-  As default, Zoommy add a zoom badge ![small plus icon](./images/zoommy/badge.png) to the thumbnail image inside the anchor tag on top left corner.
-  You can strip this badge by adding **noBadge: true** option to the configuration code inside head tag.
+  As default, Zoommy add zoom badges ![small plus icon](./images/zoommy/badge.png) to the thumbnail images inside the anchor tags on the top left corner.
+  You can strip these badges by adding **noBadge: true** option to the configuration code inside head tag.
 
     <head>
     ....
@@ -181,7 +181,7 @@ FAQ
    This means that you may add **rel="zoommy"** to anchor tag if its href attribute doesn't end with these extensions like CGI.
 
         <a href="/path/to/image?var=value" rel="zoommy">
-            <img src="/path/to/thumbnail" />
+          <img src="/path/to/thumbnail" />
         </a>
 
 

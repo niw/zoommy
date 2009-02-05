@@ -4,7 +4,6 @@ Zoommyをダウンロードしていただきありがとうございます!
 このドキュメントはZoommyの使い方を簡単なデモとともに説明します。
 
 ZoommyはSafari, Firefox, IE7とIE6をMacOS X、およびWindowsで動作確認しています。
-
 Zoommyは[Apple webpage](http://www.apple.com/)、および[FancyZoom](http://www.cabel.name/2008/02/fancyzoom-10.html)を参考に作られました。
 
 
@@ -13,7 +12,7 @@ Zoommyは[Apple webpage](http://www.apple.com/)、および[FancyZoom](http://ww
 Zoommyは次のHTMLを自動的にZoomminizeします!
 
     <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg">
-        <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
+      <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
     </a>
 
 <div class="demo">
@@ -25,13 +24,13 @@ Zoommyは次のHTMLを自動的にZoomminizeします!
 さらに、Zoommyは複数の画像をつなげてスライドショーギャラリーを作ることもできます!
 
     <a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['mySlideShow']" title="Montmartre, Paris, France">
-        <img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
+      <img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
     </a>
     <a href="http://farm3.static.flickr.com/2411/2458159794_84884f683b.jpg" rel="zoommy['mySlideShow']" title="Raffles Hotel, Singapore">
-        <img src="http://farm3.static.flickr.com/2411/2458159794_84884f683b_s.jpg" />
+      <img src="http://farm3.static.flickr.com/2411/2458159794_84884f683b_s.jpg" />
     </a>
     <a href="http://farm3.static.flickr.com/2106/2483739956_89be523894.jpg" rel="zoommy['mySlideShow']" title="Karuizawa, Nagano, Japan">
-        <img src="http://farm3.static.flickr.com/2106/2483739956_89be523894_s.jpg" />
+      <img src="http://farm3.static.flickr.com/2106/2483739956_89be523894_s.jpg" />
     </a>
 
 <div class="demo">
@@ -100,7 +99,7 @@ Zoommyを使ってみる
   画像をズーム表示した際に、タイトルを表示することができます。**title="_(画像のタイトル)_"**をリンクタグに追加してください。
 
     <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg" title="Blue sky and Sunshine!!">
-        <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
+      <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
     </a>
 
 <div class="demo">
@@ -111,16 +110,16 @@ Zoommyを使ってみる
 
 ### スライドショーギャラリーを作成する
 
-  **ref="zoommy['_(スライドショーの識別子)_']"**をリンクタグに追加することで、Zoommyは同じ識別子のリンクをスライドショーギャラリーにして表示します。
+  **rel="zoommy['_(スライドショーの識別子)_']"**をリンクタグに追加することで、Zoommyは同じ識別子のリンクをスライドショーギャラリーにして表示します。
 
     <a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['travel around the world']">
-        <img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
+      <img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
     </a>
     <a href="http://farm3.static.flickr.com/2411/2458159794_84884f683b.jpg" rel="zoommy['travel around the world']">
-        <img src="http://farm3.static.flickr.com/2411/2458159794_84884f683b_s.jpg" />
+      <img src="http://farm3.static.flickr.com/2411/2458159794_84884f683b_s.jpg" />
     </a>
     <a href="http://farm3.static.flickr.com/2106/2483739956_89be523894.jpg" rel="zoommy['travel around the world']">
-        <img src="http://farm3.static.flickr.com/2106/2483739956_89be523894_s.jpg" />
+      <img src="http://farm3.static.flickr.com/2106/2483739956_89be523894_s.jpg" />
     </a>
 
 <div class="demo">
@@ -140,7 +139,7 @@ Zoommyを使ってみる
   もし画像へのリンクをZoommyの対象から除外する場合は、**rel="nozoommy"**をリンクタグに追加してください。
 
     <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg" target="_blank" rel="nozoommy">
-        <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
+      <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
     </a>
 
 <div class="demo">
@@ -182,7 +181,7 @@ FAQ
   A. Zoommyは".png", ".gif", ".jpg"または".jpeg"で終わるhref属性か、"zoommy"で始まるrel属性を持つリンクタグを対象にします。つまり、もしリンクタグのhref属性がこれらの拡張子で終わらない場合(画像をCGIなどが生成する場合など)は、**rel="zoommy"**を書き加える必要があるでしょう。
 
         <a href="/path/to/image?var=value" rel="zoommy">
-            <img src="/path/to/thumbnail" />
+          <img src="/path/to/thumbnail" />
         </a>
 
 

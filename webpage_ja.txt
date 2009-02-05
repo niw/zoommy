@@ -1,16 +1,16 @@
-$BK\F|!"(BZoommy$B$r%j%j!<%9$7$^$9(B!
+本日、Zoommyをリリースします!
 
-Zoommy$B$O%$%a!<%83HBg$N0Y$N(BJavaScript$B%D!<%k!#(B
-$B$3$l$O4{$K$3$N%&%'%V%5%$%H$GMxMQ$7$F$$$k$b$N$HF1$8$b$N$G!"(BZoommy$B$rAH$_9~$`;v$G!"(B
-$BIaDL$N2hA|$H%j%s%/%?%0$r4JC1$K!"%U%!%C%7%g%J%V%k$G%9%?%$%j%C%7%e$J%:!<%`%$%s%?%U%'!<%9(B($B$h$/%&%'%V$G8+$k%"%l$G$9(B)$B$rHw$($k;v$,$G$-$^$9(B!
+Zoommyはイメージ拡大の為のJavaScriptツール。
+これは既にこのウェブサイトで利用しているものと同じもので、Zoommyを組み込む事で、
+普通の画像とリンクタグを簡単に、ファッショナブルでスタイリッシュなズームインタフェース(よくウェブで見るアレです)を備える事ができます!
 
-Zoommy$B$O(BSafari, Firefox, IE7$B$H(BIE6$B$r(BMacOS X$B!"$*$h$S(BWindows$B$GF0:n3NG'$7$F$$$^$9!#(B
-Zoommy$B$O(B[Apple webpage](http://www.apple.com/)$B!"$*$h$S(B[FancyZoom](http://www.cabel.name/2008/02/fancyzoom-10.html)$B$r;29M$K:n$i$l$^$7$?!#(B
+ZoommyはSafari, Firefox, IE7とIE6をMacOS X、およびWindowsで動作確認しています。
+Zoommyは[Apple webpage](http://www.apple.com/)、および[FancyZoom](http://www.cabel.name/2008/02/fancyzoom-10.html)を参考に作られました。
 
 
-$B%G%b(B
+デモ
 ----
-Zoommy$B$O<!$N(BHTML$B$r<+F0E*$K(BZoomminize$B$7$^$9(B!
+Zoommyは次のHTMLを自動的にZoomminizeします!
 
     <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg">
       <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
@@ -22,7 +22,9 @@ Zoommy$B$O<!$N(BHTML$B$r<+F0E*$K(BZoomminize$B$7$^$9(B!
 </a>
 </div>
 
-$B$5$i$K!"(BZoommy$B$OJ#?t$N2hA|$r$D$J$2$F%9%i%$%I%7%g!<%.%c%i%j!<$r:n$k$3$H$b$G$-$^$9(B!
+--------
+
+さらに、Zoommyは複数の画像をつなげてスライドショーギャラリーを作ることもできます!
 
     <a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['mySlideShow']" title="Montmartre, Paris, France">
       <img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
@@ -47,7 +49,7 @@ Zoommy$B$O<!$N(BHTML$B$r<+F0E*$K(BZoomminize$B$7$^$9(B!
 </div>
 
 
-$B%@%&%s%m!<%I(B
+ダウンロード
 ------------
 <ul class="download clearfix">
   <li><r:attachment name="zoommy-0.1.0.zip">
@@ -56,28 +58,28 @@ Zoommy$B$O<!$N(BHTML$B$r<+F0E*$K(BZoomminize$B$7$^$9(B!
 </ul>
 
 
-Zoommy$B$r;H$C$F$_$k(B
+Zoommyを使ってみる
 ------------------
-1. $B0MB8$9$k%i%$%V%i%j$r%&%'%V%5%$%H$K%3%T!<$7$^$9(B
+1. 依存するライブラリをウェブサイトにコピーします
 
-  Zoommy$B$O(B[Prototype.js](http://www.prototypejs.org/)**$B%P!<%8%g%s(B1.6.x**$B$H(B[script.aculo.us](http://script.aculo.us/)$B%P!<%8%g%s(B1.8.x$B$K0MB8$7$F$$$^$9!#(B
-  $B$b$7$9$G$K%&%'%V%5%$%H$,$3$l$i$N%i%$%V%i%j$r;H$C$F$$$k>l9g!"$?$H$($P!"(B[Ruby on Rails](http://www.rubyonrails.org/)$B$N%W%m%8%'%/%H$J$I$G$O$3$l$i$N%U%!%$%k$r%3%T!<$9$kI,MW$O$"$j$^$;$s!#(B
+  Zoommyは[Prototype.js](http://www.prototypejs.org/)**バージョン1.6.x**と[script.aculo.us](http://script.aculo.us/)バージョン1.8.xに依存しています。
+  もしすでにウェブサイトがこれらのライブラリを使っている場合、たとえば、[Ruby on Rails](http://www.rubyonrails.org/)のプロジェクトなどではこれらのファイルをコピーする必要はありません。
 
-  Zoommy$B$O8=>u!"(BPrototype.js$B%P!<%8%g%s(B1.5.x$B$K$OBP1~$7$F$$$^$;$s!#;vA0$K(BPrototype.js$B$N%P!<%8%g%s$r3NG'$7$F$/$@$5$$!#(B
+  Zoommyは現状、Prototype.jsバージョン1.5.xには対応していません。事前にPrototype.jsのバージョンを確認してください。
 
   * javascripts/prototype.js 
   * javascripts/effects.js
 
-2. $B<!$N%U%!%$%k$r%&%'%V%5%$%H$K%3%T!<$7$^$9(B
+2. 次のファイルをウェブサイトにコピーします
 
   * images/zoommy
   * javascripts/zoommy.js
 
-  $B$J$*!"(Bzoommy.js$B$O%3%s%Q%/%H2=:Q$_$N$b$N$G!"(Bzoommy\_pack.js$B$O$h$j05=L$5$l$?$b$N!"(Bzoommy\_src.js$B$O%3%s%Q%/%H2=$9$k$^$($N$b$N$G$9!#MQES$N1~$8$F;H$$J,$1$F$/$@$5$$!#(B
+  なお、zoommy.jsはコンパクト化済みのもので、zoommy\_pack.jsはより圧縮されたもの、zoommy\_src.jsはコンパクト化するまえのものです。用途の応じて使い分けてください。
 
-3. $B%&%'%V%5%$%H$N%Z!<%8$N(Bhead$B%?%0$K0J2<$N%3!<%I$rDI2C$7$^$9!#(B
+3. ウェブサイトのページのheadタグに以下のコードを追加します。
 
-  $B$9$G$K(Bprototype.js$B$H(Beffects.js$B$X$N%?%0$,$"$k>l9g$O$3$l$i$rDI2C$9$kI,MW$O$"$j$^$;$s!#(B
+  すでにprototype.jsとeffects.jsへのタグがある場合はこれらを追加する必要はありません。
 
         <head>
         ....
@@ -86,10 +88,10 @@ Zoommy$B$r;H$C$F$_$k(B
         <script type="text/javascript" src="javascripts/zoommy.js"></script>
         ....
 
-4. $BDI2C$N@_Dj%3!<%I$r5-=R(B
+4. 追加の設定コードを記述
 
-  $B$b$7>e5-<j=g(B2.$B$G%3%T!<$7$?2hA|$r0c$&>l=j$K$7$?$$>l9g$O!"3F%Z!<%8$N(Bhead$B%?%0$K0J2<$N%3!<%I$rDI2C$7$^$9!#(B
-  $B$3$3$G$N(B**imagePath**$B$O$=$N%&%'%V%Z!<%8$+$i$NAjBP%Q%9$+%5%$%HA4BN$N@dBP%Q%9$G$"$kI,MW$,$"$j$^$9!#(B
+  もし上記手順2.でコピーした画像を違う場所にしたい場合は、各ページのheadタグに以下のコードを追加します。
+  ここでの**imagePath**はそのウェブページからの相対パスかサイト全体の絶対パスである必要があります。
 
         <head>
         ....
@@ -98,15 +100,15 @@ Zoommy$B$r;H$C$F$_$k(B
         </script>
         ....
 
-5. $B$3$l$G40N;$G$9!#%&%'%V%5%$%H$rI=<($7$F$_$^$7$g$&(B!
+5. これで完了です。ウェブサイトを表示してみましょう!
 
 
-$B%+%9%?%^%$%:(B
+カスタマイズ
 ------------
 
-### $B%?%$%H%k$rI=<($9$k(B
+### タイトルを表示する
 
-  $B2hA|$r%:!<%`I=<($7$?:]$K!"%?%$%H%k$rI=<($9$k$3$H$,$G$-$^$9!#(B**title="_($B2hA|$N%?%$%H%k(B)_"**$B$r%j%s%/%?%0$KDI2C$7$F$/$@$5$$!#(B
+  画像をズーム表示した際に、タイトルを表示することができます。**title="_(画像のタイトル)_"**をリンクタグに追加してください。
 
     <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg" title="Blue sky and Sunshine!!">
       <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
@@ -118,9 +120,9 @@ Zoommy$B$r;H$C$F$_$k(B
 </a>
 </div>
 
-### $B%9%i%$%I%7%g!<%.%c%i%j!<$r:n@.$9$k(B
+### スライドショーギャラリーを作成する
 
-  **rel="zoommy['_($B%9%i%$%I%7%g!<$N<1JL;R(B)_']"**$B$r%j%s%/%?%0$KDI2C$9$k$3$H$G!"(BZoommy$B$OF1$8<1JL;R$N%j%s%/$r%9%i%$%I%7%g!<%.%c%i%j!<$K$7$FI=<($7$^$9!#(B
+  **rel="zoommy['_(スライドショーの識別子)_']"**をリンクタグに追加することで、Zoommyは同じ識別子のリンクをスライドショーギャラリーにして表示します。
 
     <a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['travel around the world']">
       <img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
@@ -144,9 +146,9 @@ Zoommy$B$r;H$C$F$_$k(B
 </a>
 </div>
 
-### Zoommy$B$NBP>]$+$i=|30$9$k(B
+### Zoommyの対象から除外する
 
-  $B$b$72hA|$X$N%j%s%/$r(BZoommy$B$NBP>]$+$i=|30$9$k>l9g$O!"(B**rel="nozoommy"**$B$r%j%s%/%?%0$KDI2C$7$F$/$@$5$$!#(B
+  もし画像へのリンクをZoommyの対象から除外する場合は、**rel="nozoommy"**をリンクタグに追加してください。
 
     <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg" target="_blank" rel="nozoommy">
       <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
@@ -158,10 +160,10 @@ Zoommy$B$r;H$C$F$_$k(B
 </a>
 </div>
 
-### Zoommy$B$N%P%C%8$rI=<($7$J$$(B
+### Zoommyのバッジを表示しない
 
-  $BI8=`$G$O(BZoommy$B$OBP>]$N%j%s%/$J$$$N%5%`%M%$%k$K(BZoommy$B%P%C%8$r:8>e$KI=<($7$^$9!#(B
-  $B$=$NI,MW$,$J$$>l9g$O!"(B**noBadge: true**$B$H$$$&%*%W%7%g%s$r(Bhead$B%?%0$N@_Dj%3!<%I$K2C$($F$/$@$5$$!#(B
+  標準ではZoommyは対象のリンクないのサムネイルにZoommyバッジを左上に表示します。
+  その必要がない場合は、**noBadge: true**というオプションをheadタグの設定コードに加えてください。
 
     <head>
     ....
@@ -172,10 +174,10 @@ Zoommy$B$r;H$C$F$_$k(B
     </script>
     ....
 
-### Z-Index$B$rD4@0$9$k(B
+### Z-Indexを調整する
 
-  $B$b$7(BZoommy$B$r$[$+$N$+$C$3$$$$%9%/%j%W%H$d%i%$%V%i%j$HF1;~$K;H$&>l9g!"(B**baseZIndex**$B%*%W%7%g%s$r@_Dj%3!<%I$KDI2C$7$F!"(BZ-Index$B$N=gHV$rL@<($9$kI,MW$,$"$k$G$7$g$&!#(B
-  $BI8=`$G$O!"(BZoommy$B$O(B900$B0J9_$r;H$$$^$9!#(B
+  もしZoommyをほかのかっこいいスクリプトやライブラリと同時に使う場合、**baseZIndex**オプションを設定コードに追加して、Z-Indexの順番を明示する必要があるでしょう。
+  標準では、Zoommyは900以降を使います。
 
     <head>
     ....
@@ -186,26 +188,26 @@ Zoommy$B$r;H$C$F$_$k(B
 
 FAQ
 ---
-* Q. $B$$$/$D$+$N2hA|$X$N%j%s%/%?%0$,(BZoommy$B$NBP>]$K$J$j$^$;$s!#$J$<$G$9$+(B?
+* Q. いくつかの画像へのリンクタグがZoommyの対象になりません。なぜですか?
 
-  A. Zoommy$B$O(B".png", ".gif", ".jpg"$B$^$?$O(B".jpeg"$B$G=*$o$k(Bhref$BB0@-$+!"(B"zoommy"$B$G;O$^$k(Brel$BB0@-$r;}$D%j%s%/%?%0$rBP>]$K$7$^$9!#$D$^$j!"$b$7%j%s%/%?%0$N(Bhref$BB0@-$,$3$l$i$N3HD%;R$G=*$o$i$J$$>l9g(B($B2hA|$r(BCGI$B$J$I$,@8@.$9$k>l9g$J$I(B)$B$O!"(B**rel="zoommy"**$B$r=q$-2C$($kI,MW$,$"$k$G$7$g$&!#(B
+  A. Zoommyは".png", ".gif", ".jpg"または".jpeg"で終わるhref属性か、"zoommy"で始まるrel属性を持つリンクタグを対象にします。つまり、もしリンクタグのhref属性がこれらの拡張子で終わらない場合(画像をCGIなどが生成する場合など)は、**rel="zoommy"**を書き加える必要があるでしょう。
 
         <a href="/path/to/image?var=value" rel="zoommy">
           <img src="/path/to/thumbnail" />
         </a>
 
 
-$B99?7MzNr(B
+更新履歴
 --------
 * 1.0.1
-  * $B:G=i$N%j%j!<%9(B
+  * 最初のリリース
 
 
-$B$4;Y1g$N$*4j$$(B
+ご支援のお願い
 --------------
-  $B$b$7$3$N(BZoommy$B$r5$$KF~$C$FD:$1$^$7$?$i!"$*5$7Z$K0J2<$N%U%)!<%`$+$i(B[PayPal](http://www.paypal.com)$B$rDL$8$F$4;Y1g$$$?$@$1$k$H9,$$$G$9!#(B
+  もしこのZoommyを気に入って頂けましたら、お気軽に以下のフォームから[PayPal](http://www.paypal.com)を通じてご支援いただけると幸いです。
 
-### Zoommy$B$r;Y1g$9$k(B
+### Zoommyを支援する
 
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_xclick" />
@@ -217,12 +219,12 @@ FAQ
 <input type="hidden" name="return" value="http://niw.at/" />
 <input type="hidden" name="tax" value="0" />
 <input type="hidden" name="lc" value="US" />
-$B$4;Y1g(B <input type="text" name="amount" value="1000" size="6" />$B1_(B
-<input type="submit" name="submit" value="$B4sIU$9$k(B" />
+ご支援 <input type="text" name="amount" value="1000" size="6" />円
+<input type="submit" name="submit" value="寄付する" />
 </form>
 
-$B3'MM$N$4;Y1g$K46<U$$$?$7$^$9!#(B
+皆様のご支援に感謝いたします。
 
-$B%i%$%;%s%9(B
+ライセンス
 ----------
-  Zoommy$B$O(B[MIT License](http://ja.wikipedia.org/wiki/MIT_License)$B$G8x3+$7$F$$$^$9!#(B
+  Zoommyは[MIT License](http://ja.wikipedia.org/wiki/MIT_License)で公開しています。

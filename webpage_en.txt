@@ -7,7 +7,7 @@ Zoommy was strongy inspired from [Apple webpage](http://www.apple.com/) and [Fan
 
 Demo
 ----
-Zoommy automatically change next code into a delicious image link! (zoomminizing!)
+Zoommy automatically change the next code into a delicious image link! (zoomminizing!)
 
     <a href="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a.jpg">
       <img src="http://farm4.static.flickr.com/3033/2457505175_37b8fffc2a_s.jpg" />
@@ -19,7 +19,9 @@ Zoommy automatically change next code into a delicious image link! (zoomminizing
 </a>
 </div>
 
-In addition, Zoommy also automically change image chains into a slideshow gallery!
+--------
+
+In addition, Zoommy also automically change the images chain into a slideshow gallery!
 
     <a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['mySlideShow']" title="Montmartre, Paris, France">
       <img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
@@ -71,7 +73,7 @@ Getting Started
 
   For your imformation, zoommy.js is compacted script, zoommy\_pack.js is more compacted one and zoommy\_src.js is original script before compaction.
 
-3. Adding include tags into your web pages' header
+3. Adding include tags to your web pages' header
 
   The tag for prototype.js and effects.js does not need if they are already there.
 
@@ -114,9 +116,9 @@ Customize
 </a>
 </div>
 
-### Making a slideshow gallery
+### Making slideshow galleries
 
-  Adding **rel="zoommy['_(name of slideshow)_']"** attirbute to anchor tag, Zoommy groups images with same name and changes them into slideshow gallery.
+  Adding **rel="zoommy['_(name of slideshow)_']"** attirbute to anchor tag, Zoommy groups images with same name and changes them into a slideshow gallery.
 
     <a href="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f.jpg" rel="zoommy['travel around the world']">
       <img src="http://farm3.static.flickr.com/2337/2457818492_fd9f9b7f0f_s.jpg" />
@@ -156,8 +158,8 @@ Customize
 
 ### Disabling Zoommy badges
 
-  As default, Zoommy add a zoom badge to the thumbnail image inside the anchor tag on top left corner.
-  You can strip this badge by adding **noBadge: true** option to the configuration code inside head tag.
+  As default, Zoommy add zoom badges to the thumbnail images inside the anchor tags on the top left corner.
+  You can strip these badges by adding **noBadge: true** option to the configuration code inside head tag.
 
     <head>
     ....
