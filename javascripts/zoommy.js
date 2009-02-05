@@ -672,10 +672,10 @@ Event.observe(window, 'load', (function() {
 	config = $H(config).merge(window.zoommy_config || {}).toObject();
 	if(! config.imagesPath) {
 		var tag = $A(document.getElementsByTagName("script")).find(function(tag) {
-			return (tag.src && tag.src.match(/zoommy\.js(\?.*)?$/));
+			return (tag.src && tag.src.match(/zoommy(_[a-z]+)?\.js(\?.*)?$/));
 		});
 		if(tag) {
-			config.imagesPath = tag.src.replace(/zoommy\.js(\?.*)?$/, '../images/zoommy');
+			config.imagesPath = tag.src.replace(/zoommy(_[a-z]+)?\.js(\?.*)?$/, '../images/zoommy');
 		}
 	}
 	var zoommy = new Zoommy();
