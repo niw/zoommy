@@ -11,7 +11,7 @@ var config = {
 	baseZIndex: 900
 };
 
-function viewportOffsetByGetBoundingClientRect(element) {
+function viewportOffset(element) {
 	var rect = element.getBoundingClientRect();
 	var doc = element.ownerDocument.documentElement;
 	rect.left += Math.max(doc.scrollLeft, document.body.scrollLeft) - doc.clientLeft;
@@ -34,14 +34,14 @@ function clonePosition(element, source, options) {
 		}, options || {});
 
 		source = $(source);
-		var p = viewportOffsetByGetBoundingClientRect(source);
+		var p = viewportOffset(source);
 
 		element = $(element);
 		delta = [0, 0];
     	if (Element.getStyle(element, 'position') == 'absolute') {
 			var offsetParent = element.getOffsetParent();
-			if(offsetParent.tagName.match(/^body|html/i)) {
-				delta = viewportOffsetByGetBoundingClientRect(offsetParent);
+			if(! offsetParent.tagName.match(/^body|html/i)) {
+				delta = viewportOffset(offsetParent);
 			}
 		}
 
