@@ -463,18 +463,29 @@ var Zoommy = Class.create({
 					}
 				}
 				var thumbnail_tag = $($A(tag.getElementsByTagName('img')).first());
-				if(thumbnail_tag && !config.noBadge) {
-					var badge = createChild(document.body, 'div', function(tag) {
-						tag.style.width = tag.style.height = '20px';
-						tag.style.position = 'absolute';
-						tag.style.zIndex = config.baseZIndex++;
-						setBackgroundImage(tag, config.imagesPath + '/badge.png');
-					});
-					var position = function() {
-						clonePosition(badge, thumbnail_tag, {offsetTop: -10, offsetLeft: -10, setWidth: false, setHeight: false});
-					};
-					Event.observe(window, 'resize', position);
-					position();
+				if(thumbnail_tag) {
+					var ornaments = $A([]);
+					if(! config.noBadge) {
+						ornaments.push({
+							element: createChild(document.body, 'div', function(tag) {
+								tag.style.width = tag.style.height = '20px';
+								tag.style.position = 'absolute';
+								tag.style.zIndex = config.baseZIndex++;
+								setBackgroundImage(tag, config.imagesPath + '/badge.png');
+							}),
+							option: {offsetTop: -10, offsetLeft: -10, setWidth: false, setHeight: false}
+						});
+					}
+					// NOTE Add additional ornaments here
+					if(ornaments.length) {
+						var position = function() {
+							ornaments.each(function(e) {
+								clonePosition(e.element, thumbnail_tag, e.option);
+							});
+						};
+						position();
+						Event.observe(window, 'resize', position);
+					}
 				}
 			}
 		}).bind(this));
