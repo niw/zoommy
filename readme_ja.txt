@@ -8,7 +8,7 @@ ZoommyはSafari, Firefox, IE7とIE6をMacOS X、およびWindowsで動作確認�
 Zoommyは[Apple webpage](http://www.apple.com/)、および[FancyZoom](http://www.cabel.name/2008/02/fancyzoom-10.html)を参考に作られました。
 
 
-Demo
+デモ
 ----
 Zoommyは次のHTMLを自動的にZoomminizeします!
 
@@ -47,8 +47,8 @@ Zoommyは次のHTMLを自動的にZoomminizeします!
 </div>
 
 
-Zoomyを使ってみる
------------------
+Zoommyを使ってみる
+------------------
 1. 依存するライブラリをウェブサイトにコピーします
 
   Zoommyは[Prototype.js](http://www.prototypejs.org/)**バージョン1.6.0.1**と[script.aculo.us](http://script.aculo.us/)バージョン1.8.xに依存しています。
@@ -87,7 +87,7 @@ Zoomyを使ってみる
         <head>
         ....
         <script type="text/javascript">
-        zoommy_config = {imagePath: "relative/or/site/wide/absolute/path/to/zoomy/image/from/html"};
+        zoommy_config = {imagePath: "relative/or/site/wide/absolute/path/to/zoommy/image/from/html"};
         </script>
         ....
 

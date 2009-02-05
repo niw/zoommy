@@ -79,13 +79,13 @@ Getting Started
 
 4. Additional configuration if needed
 
-  If you want to use the paths for images used in Zoomy(files coped in previous section 2) as your own relative path, You should put the next tag into header of each html page.
+  If you want to use the paths for images used in Zoommy(files coped in previous section 2) as your own relative path, You should put the next tag into header of each html page.
   **imagePath** option should be relative pafh from the html or site wide absolute path to the images.
 
         <head>
         ....
         <script type="text/javascript">
-        zoommy_config = {imagePath: 'relative/path/to/zoomy/image/from/html'};
+        zoommy_config = {imagePath: 'relative/path/to/zoommy/image/from/html'};
         </script>
         ....
 
