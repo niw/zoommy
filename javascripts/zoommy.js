@@ -1,10 +1,10 @@
-/* zoommy.js @VERSION Copyright (c) 2008 Yoshimasa Niwa */
+/* zoommy.js @VERSION Copyright (c) 2009 Yoshimasa Niwa */
 (function() {
 if((typeof Prototype == 'undefined') || (typeof Element == 'undefined') || (typeof Element.Methods == 'undefined') || !Prototype.Version.match(/^1\.6\./)) {
-	throw "Missing prototype.js, please include prototype.js ver.1.6.x before including zoommy.js"
+	throw "Missing prototype.js, please include prototype.js ver.1.6.x before including zoommy.js";
 }
 if(typeof Effect == 'undefined') {
-	throw "Missing script.aculo.us's effect.js, please include effect.js ver.1.8.x before including zoommy.js"
+	throw "Missing script.aculo.us's effect.js, please include effect.js ver.1.8.x before including zoommy.js";
 }
 
 var config = {
@@ -18,7 +18,11 @@ function viewportOffsetByGetBoundingClientRect(element) {
 	rect.top += Math.max(doc.scrollTop, document.body.scrollTop) - doc.clientTop;
 	return [rect.left, rect.top];
 }
+
 function clonePosition(element, source, options) {
+	// NOTE current prototype.js has a big bug around viewportOffset and clonePosition.
+	// We provide another implementation for cloning the position of elements using by getBoundingClientRect()
+	// This hook may be replaced when the prototoype.js is updated.
 	if(Prototype.Browser.IE) {
 		var options = Object.extend({
 			setLeft: true,
@@ -55,7 +59,7 @@ function clonePosition(element, source, options) {
 function createChild(parent, tagName, func) {
 	var element = $(document.createElement(tagName));
 	if(func) {
-		func(element)
+		func(element);
 	}
 	parent.appendChild(element);
 	return element;
@@ -65,7 +69,7 @@ function setBackgroundImage(element, url) {
 	if(Prototype.Browser.IE) {
 		element.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true', sizingMethod='scale', src='" + url + "')";
 	} else {
-		element.style.backgroundImage = "url(" + url + ")"
+		element.style.backgroundImage = "url(" + url + ")";
 	}
 }
 
@@ -84,10 +88,10 @@ Effect.Resize = Class.create(Effect.Base, {
 		this.restoreAfterFinish = this.options.restoreAfterFinish || false;
 		this.elementPositioning = this.element.getStyle('position');
 		this.originalStyle = {};
-		['top','left','width','height'].each( function(k) {
+		['top','left','width','height'].each((function(k) {
 			this.originalStyle[k] = this.element.style[k];
-		}.bind(this));
-		this.originalTop  = this.element.offsetTop;
+		}).bind(this));
+		this.originalTop = this.element.offsetTop;
 		this.originalLeft = this.element.offsetLeft;
 	},
 	update: function(position) {
@@ -127,7 +131,7 @@ var Spinner = Class.create({
 		});
 		for(var i=0; i<12; i++) {
 			var img = new Image();
-			img.src = config.imagesPath + '/spinner_' + (i+1) + '.png'
+			img.src = config.imagesPath + '/spinner_' + (i+1) + '.png';
 		}
 	},
 	show: function() {
@@ -387,7 +391,6 @@ var Navigator = Class.create({
 			this.caption_tag.hide();
 		}
 		clonePosition(this.tag, canvas, {offsetTop: canvas.getHeight() + 20, offsetLeft: (canvas.getWidth() - this.tag.getWidth()) / 2, setWidth: false, setHeight: false});
-		//clonePosition(this.tag, canvas, {offsetTop: canvas.getHeight() - 50, offsetLeft: (canvas.getWidth() - this.tag.getWidth()) / 2, setWidth: false, setHeight: false});
 		this.tag.style.zIndex = config.baseZIndex + 5;
 		if(Prototype.Browser.IE) {
 			this.tag.show();
@@ -423,13 +426,11 @@ var Zoommy = Class.create({
 				this.close();
 				break;
 			case 37: // Left Key
-			//case 38: // Up Key
 				this.prev();
-				break
+				break;
 			case 39: // Right Key
-			//case 40: // Down Key
 				this.next();
-				break
+				break;
 			}
 		}).bind(this));
 		this.canvas = createChild(document.body, 'img', function(tag) {
