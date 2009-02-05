@@ -11,6 +11,47 @@ var config = {
 	baseZIndex: 900
 };
 
+function viewportOffsetByGetBoundingClientRect(element) {
+	var rect = element.getBoundingClientRect();
+	var doc = element.ownerDocument.documentElement;
+	rect.left += Math.max(doc.scrollLeft, document.body.scrollLeft) - doc.clientLeft;
+	rect.top += Math.max(doc.scrollTop, document.body.scrollTop) - doc.clientTop;
+	return [rect.left, rect.top];
+}
+function clonePosition(element, source, options) {
+	if(Prototype.Browser.IE) {
+		var options = Object.extend({
+			setLeft: true,
+			setTop: true,
+			setWidth: true,
+			setHeight: true,
+			offsetTop: 0,
+			offsetLeft: 0
+		}, options || {});
+
+		source = $(source);
+		var p = viewportOffsetByGetBoundingClientRect(source);
+
+		element = $(element);
+		delta = [0, 0];
+    	if (Element.getStyle(element, 'position') == 'absolute') {
+			var offsetParent = element.getOffsetParent();
+			if(offsetParent.tagName.match(/^body|html/i)) {
+				delta = viewportOffsetByGetBoundingClientRect(offsetParent);
+			}
+		}
+
+		if (options.setLeft) element.style.left = (p[0] - delta[0] + options.offsetLeft) + 'px';
+		if (options.setTop) element.style.top = (p[1] - delta[1] + options.offsetTop) + 'px';
+		if (options.setWidth) element.style.width = source.offsetWidth + 'px';
+		if (options.setHeight) element.style.height = source.offsetHeight + 'px';
+
+		return element;
+	} else {
+		return Element.clonePosition(element, source, options);
+	}
+}
+
 function createChild(parent, tagName, func) {
 	var element = $(document.createElement(tagName));
 	if(func) {
@@ -82,7 +123,6 @@ var Spinner = Class.create({
 		this.tag = createChild(document.body, 'div', function(tag) {
 			tag.style.position = 'absolute';
 			tag.style.width = tag.style.height = '50px';
-			tag.style.zIndex = config.baseZIndex;
 			tag.hide();
 		});
 		for(var i=0; i<12; i++) {
@@ -110,6 +150,7 @@ var Spinner = Class.create({
 			var offset = document.viewport.getScrollOffsets();
 			this.tag.style.left = (viewportSize.width - tagSize.width)/2 + offset.left + 'px';
 			this.tag.style.top = (viewportSize.height - tagSize.height)/2 + offset.top + 'px';
+			this.tag.style.zIndex = config.baseZIndex + 1;
 
 			if(Prototype.Browser.IE) {
 				this.tag.show();
@@ -149,7 +190,6 @@ var Shadow = Class.create({
 			tag.style.position = 'absolute';
 			tag.style.borderSpacing = tag.style.padding = tag.style.margin = '0';
 			tag.style.borderCollapse = 'collapse';
-			tag.style.zIndex = config.baseZIndex + 1;
 			createChild(tag, 'tbody', (function(tag) {
 				createChild(tag, 'tr', function(tag) {
 					createChild(tag, 'td', function(tag) {
@@ -203,10 +243,11 @@ var Shadow = Class.create({
 		}).bind(this));
 	},
 	show: function(element) {
-		element.style.zIndex = config.baseZIndex + 2;
-		this.tag.clonePosition(element, {offsetTop: -10, offsetLeft: -10, setWidth: false, setHeight: false});
+		element.style.zIndex = config.baseZIndex + 3;
+		clonePosition(this.tag, element, {offsetTop: -10, offsetLeft: -10, setWidth: false, setHeight: false});
 		this.tag.style.width = element.getWidth() + 20 + 'px';
 		this.tag.style.height = element.getHeight() + 20 + 'px';
+		this.tag.style.zIndex = config.baseZIndex + 2;
 		if(Prototype.Browser.IE) {
 			this.centerTag.style.width = element.getWidth() - 40 + 'px';
 			this.centerTag.style.height = element.getHeight() - 40 + 'px';
@@ -228,7 +269,6 @@ var CloseButton = Class.create({
 			tag.style.position = 'absolute';
 			tag.style.width = '30px';
 			tag.style.height = '30px';
-			tag.style.zIndex = config.baseZIndex + 3;
 			tag.style.cursor = Prototype.Browser.IE ? 'hand' : 'pointer';
 			setBackgroundImage(tag, config.imagesPath + '/close_button.png');
 		});
@@ -239,7 +279,8 @@ var CloseButton = Class.create({
 		}).bind(this));
 	},
 	show: function(element) {
-		this.tag.clonePosition(element, {offsetTop: -14, offsetLeft: -14, setWidth: false, setHeight: false});
+		clonePosition(this.tag, element, {offsetTop: -14, offsetLeft: -14, setWidth: false, setHeight: false});
+		this.tag.style.zIndex = config.baseZIndex + 4;
 		if(Prototype.Browser.IE) {
 			this.tag.show();
 		} else {
@@ -260,7 +301,6 @@ var Navigator = Class.create({
 			tag.style.position = 'absolute';
 			tag.style.borderSpacing = tag.style.padding = tag.style.margin = '0';
 			tag.style.borderCollapse = 'collapse';
-			tag.style.zIndex = config.baseZIndex + 4;
 			tag.style.color = '#fff';
 			tag.style.textShadow = '#222 0 -1px 0';
 			createChild(tag, 'tbody', (function(tag) {
@@ -346,8 +386,9 @@ var Navigator = Class.create({
 		} else {
 			this.caption_tag.hide();
 		}
-		this.tag.clonePosition(canvas, {offsetTop: canvas.getHeight() + 20, offsetLeft: (canvas.getWidth() - this.tag.getWidth()) / 2, setWidth: false, setHeight: false});
-		//this.tag.clonePosition(canvas, {offsetTop: canvas.getHeight() - 50, offsetLeft: (canvas.getWidth() - this.tag.getWidth()) / 2, setWidth: false, setHeight: false});
+		clonePosition(this.tag, canvas, {offsetTop: canvas.getHeight() + 20, offsetLeft: (canvas.getWidth() - this.tag.getWidth()) / 2, setWidth: false, setHeight: false});
+		//clonePosition(this.tag, canvas, {offsetTop: canvas.getHeight() - 50, offsetLeft: (canvas.getWidth() - this.tag.getWidth()) / 2, setWidth: false, setHeight: false});
+		this.tag.style.zIndex = config.baseZIndex + 5;
 		if(Prototype.Browser.IE) {
 			this.tag.show();
 		} else {
@@ -420,17 +461,19 @@ var Zoommy = Class.create({
 						link_tails[match[1]] = tag;
 					}
 				}
-				var thumbnail_tag = $A(tag.getElementsByTagName('img')).first();
+				var thumbnail_tag = $($A(tag.getElementsByTagName('img')).first());
 				if(thumbnail_tag && !config.noBadge) {
-					var badge = createChild(tag, 'div', function(tag) {
-						tag.setStyle({
-							width: '20px',
-							height: '20px',
-							position: 'absolute'
-						});
+					var badge = createChild(document.body, 'div', function(tag) {
+						tag.style.width = tag.style.height = '20px';
+						tag.style.position = 'absolute';
+						tag.style.zIndex = config.baseZIndex++;
 						setBackgroundImage(tag, config.imagesPath + '/badge.png');
 					});
-					badge.clonePosition(thumbnail_tag, {offsetTop: -10, offsetLeft: -10, setWidth: false, setHeight: false});
+					var position = function() {
+						clonePosition(badge, thumbnail_tag, {offsetTop: -10, offsetLeft: -10, setWidth: false, setHeight: false});
+					};
+					Event.observe(window, 'resize', position);
+					position();
 				}
 			}
 		}).bind(this));
@@ -471,7 +514,7 @@ var Zoommy = Class.create({
 
 			this.anchor_tag = tag;
 			this.thumbnail_tag = $A(tag.getElementsByTagName('img')).first() || tag;
-			this.canvas.clonePosition(this.thumbnail_tag);
+			clonePosition(this.canvas, this.thumbnail_tag);
 			this.canvas.originalPosition = {top: parseInt(this.canvas.style.top), left: parseInt(this.canvas.style.left)};
 			this.canvas.setAttribute('src', tag.getAttribute('href'));
 
@@ -495,6 +538,7 @@ var Zoommy = Class.create({
 			], {
 				beforeStart: (function() {
 					this.canvas.setOpacity(0.0);
+					this.canvas.style.zIndex = config.baseZIndex;
 					this.canvas.show();
 				}).bind(this),
 				afterFinish: (function() {
@@ -624,4 +668,4 @@ Event.observe(window, 'load', (function() {
 }).bind(this));
 })();
 
-// vim:foldmethod=marker
+// vim:ts=4:sw=4:noexpandtab:foldmethod=marker:
