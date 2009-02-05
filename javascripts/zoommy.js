@@ -324,8 +324,8 @@ var Navigator = Class.create({
 							}).bind(this));
 						}).bind(this));
 					}).bind(this));
-					createChild(tag, 'td',  (function(tag) {
-						tag.style.minWidth = '30px';
+					this.caption_tag_holder = createChild(tag, 'td',  (function(tag) {
+						tag.style.minWidth = '60px';
 						this.caption_tag = createChild(tag, 'table', (function(tag) {
 							// create caption tags using table tag{{{
 							tag.style.borderSpacing = tag.style.padding = tag.style.margin = '0';
@@ -386,8 +386,10 @@ var Navigator = Class.create({
 	show: function(canvas, title) {
 		if(title) {
 			this.caption_center_tag.innerHTML = title;
+			this.caption_tag_holder.style.width = "auto";
 			this.caption_tag.show();
 		} else {
+			this.caption_tag_holder.style.width = "60px";
 			this.caption_tag.hide();
 		}
 		clonePosition(this.tag, canvas, {offsetTop: canvas.getHeight() + 20, offsetLeft: (canvas.getWidth() - this.tag.getWidth()) / 2, setWidth: false, setHeight: false});
