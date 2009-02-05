@@ -51,12 +51,10 @@ Zoommyを使ってみる
 ------------------
 1. 依存するライブラリをウェブサイトにコピーします
 
-  Zoommyは[Prototype.js](http://www.prototypejs.org/)**バージョン1.6.0.1**と[script.aculo.us](http://script.aculo.us/)バージョン1.8.xに依存しています。
+  Zoommyは[Prototype.js](http://www.prototypejs.org/)**バージョン1.6.x**と[script.aculo.us](http://script.aculo.us/)バージョン1.8.xに依存しています。
   もしすでにウェブサイトがこれらのライブラリを使っている場合、たとえば、[Ruby on Rails](http://www.rubyonrails.org/)のプロジェクトなどではこれらのファイルをコピーする必要はありません。
 
   Zoommyは現状、Prototype.jsバージョン1.5.xには対応していません。事前にPrototype.jsのバージョンを確認してください。
-
-  **Prototype.jsはバージョン1.6.0.1をお使いください。現状Prototype.jsのバージョン1.6.0.2、1.6.0.3には[IE6とIE7で起こる位置計算のバグがあり](http://prototype.lighthouseapp.com/projects/8886/tickets/90-cloneposition-problem-in-ie7)、Zoommyの動作に影響します。**
 
   * javascripts/prototype.js 
   * javascripts/effects.js

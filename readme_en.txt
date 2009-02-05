@@ -50,11 +50,9 @@ Getting Started
 ---------------
 1. Copy dependencies into your web site
 
-  Zoommy depends on [Prototype.js](http://www.prototypejs.org/) **version 1.6.0.1** and [script.aculo.us](http://script.aculo.us/) version 1.8.x.
+  Zoommy depends on [Prototype.js](http://www.prototypejs.org/) **version 1.6.x** and [script.aculo.us](http://script.aculo.us/) version 1.8.x.
   If your website already use these libraries, like a [Ruby on Rails](http://www.rubyonrails.org/) project, These files does not need to copy.
   Sorry that Zoommy is currently incompatible Prototype.js version 1.5.x, please check your version of prototype.js.
-
-  **Please use Prototype.js version 1.6.0.1 bacause currently, Prototype.js version 1.6.0.2 and 1.6.0.3 has [a positioning bug on IE6 and IE7](http://prototype.lighthouseapp.com/projects/8886/tickets/90-cloneposition-problem-in-ie7) which affects Zoommy's behavior.**
 
   * javascripts/prototype.js 
   * javascripts/effects.js
